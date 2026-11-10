@@ -1,0 +1,133 @@
+KotLex - Analizador lexico
+Archivo: algoritmos/algoritmo1.kt
+Usuario: williamp11
+Fecha:   10/11/2026 00:13:42
+
+#    Linea  Col   Token           Lexema
+1    7      1     CONST           const
+2    7      7     VAL             val
+3    7      11    ID              NOTA_MINIMA
+4    7      25    DOUBLE_LIT      7.0
+5    9      1     FUN             fun
+6    9      5     ID              promedio
+7    9      13    LPAREN          (
+8    9      14    ID              notas
+9    9      19    DOS_PUNTOS      :
+10   9      21    ID              List
+11   9      26    ID              Double
+12   9      33    RPAREN          )
+13   9      34    DOS_PUNTOS      :
+14   9      36    ID              Double
+15   9      43    LBRACE          {
+16   10     5     VAR             var
+17   10     9     ID              suma
+18   10     16    DOUBLE_LIT      0.0
+19   11     5     FOR             for
+20   11     9     LPAREN          (
+21   11     10    ID              n
+22   11     12    IN              in
+23   11     15    ID              notas
+24   11     20    RPAREN          )
+25   11     22    LBRACE          {
+26   12     9     ID              suma
+27   12     17    ID              n
+28   13     5     RBRACE          }
+29   14     5     RETURN          return
+30   14     12    ID              suma
+31   14     19    ID              notas
+32   14     24    PUNTO           .
+33   14     25    ID              size
+34   15     1     RBRACE          }
+35   17     1     FUN             fun
+36   17     5     ID              main
+37   17     9     LPAREN          (
+38   17     10    RPAREN          )
+39   17     12    LBRACE          {
+40   18     5     VAL             val
+41   18     9     ID              nombre
+42   18     15    DOS_PUNTOS      :
+43   18     17    ID              String
+44   18     26    STRING_LIT      "Jonathan"
+45   19     5     VAL             val
+46   19     9     ID              notas
+47   19     17    LISTOF          listOf
+48   19     23    LPAREN          (
+49   19     24    DOUBLE_LIT      8.5
+50   19     27    COMA            ,
+51   19     29    DOUBLE_LIT      6.0
+52   19     32    COMA            ,
+53   19     34    DOUBLE_LIT      9.25
+54   19     38    RPAREN          )
+55   20     5     VAL             val
+56   20     9     ID              prom
+57   20     16    ID              promedio
+58   20     24    LPAREN          (
+59   20     25    ID              notas
+60   20     30    RPAREN          )
+61   21     5     VAR             var
+62   21     9     ID              aprobado
+63   21     20    FALSE           false
+64   23     5     IF              if
+65   23     8     LPAREN          (
+66   23     9     ID              prom
+67   23     17    ID              NOTA_MINIMA
+68   23     28    RPAREN          )
+69   23     30    LBRACE          {
+70   24     9     ID              aprobado
+71   24     20    TRUE            true
+72   25     9     PRINTLN         println
+73   25     16    LPAREN          (
+74   25     17    STRING_LIT      "$nombre aprobo con $prom"
+75   25     43    RPAREN          )
+76   26     5     RBRACE          }
+77   26     7     ELSE            else
+78   26     12    LBRACE          {
+79   27     9     PRINTLN         println
+80   27     16    LPAREN          (
+81   27     17    STRING_LIT      "$nombre reprobo"
+82   27     34    RPAREN          )
+83   28     5     RBRACE          }
+84   30     5     IF              if
+85   30     8     LPAREN          (
+86   30     10    ID              aprobado
+87   30     18    RPAREN          )
+88   30     20    LBRACE          {
+89   31     9     PRINT           print
+90   31     14    LPAREN          (
+91   31     15    STRING_LIT      "Ingrese la nota del supletorio: "
+92   31     49    RPAREN          )
+93   32     9     VAL             val
+94   32     13    ID              supletorio
+95   32     26    READLN          readln
+96   32     32    LPAREN          (
+97   32     33    RPAREN          )
+98   32     34    PUNTO           .
+99   32     35    ID              toDouble
+100  32     43    LPAREN          (
+101  32     44    RPAREN          )
+102  33     9     PRINTLN         println
+103  33     16    LPAREN          (
+104  33     17    STRING_LIT      "Nueva nota: ${(prom + supletorio) / 2}"
+105  33     57    RPAREN          )
+106  34     5     RBRACE          }
+107  35     1     RBRACE          }
+
+Errores (16):
+Error léxico (línea 7, col. 23): carácter no reconocido "=".
+Error léxico (línea 9, col. 25): carácter no reconocido "<".
+Error léxico (línea 9, col. 32): carácter no reconocido ">".
+Error léxico (línea 10, col. 14): carácter no reconocido "=".
+Error léxico (línea 12, col. 14): carácter no reconocido "+".
+Error léxico (línea 12, col. 15): carácter no reconocido "=".
+Error léxico (línea 14, col. 17): carácter no reconocido "/".
+Error léxico (línea 18, col. 24): carácter no reconocido "=".
+Error léxico (línea 19, col. 15): carácter no reconocido "=".
+Error léxico (línea 20, col. 14): carácter no reconocido "=".
+Error léxico (línea 21, col. 18): carácter no reconocido "=".
+Error léxico (línea 23, col. 14): carácter no reconocido ">".
+Error léxico (línea 23, col. 15): carácter no reconocido "=".
+Error léxico (línea 24, col. 18): carácter no reconocido "=".
+Error léxico (línea 30, col. 9): carácter no reconocido "!".
+Error léxico (línea 32, col. 24): carácter no reconocido "=".
+
+Total: 107 tokens validos, 16 errores
