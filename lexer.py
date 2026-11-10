@@ -1,6 +1,6 @@
 # KotLex - Analizador lexico para un subconjunto de Kotlin usando PLY
 # Lenguajes de Programacion
-# Integrantes: Jonathan Ramos, Miguel Galarza, Willian Pacalla
+# Integrantes: Jonathan Ramos, Miguel Galarza, William Pacalla
 #
 # Uso:   python lexer.py <archivo.kt> <usuarioGit>
 # Ej:    python lexer.py algoritmos/algoritmo1.kt JonathanRamos24
@@ -189,9 +189,73 @@ t_QUESTION = r'\?'      # tipos anulables, ej: String?
 
 
 # ------------------------------------------------------------
-# Inicio aporte Willian Pacalla
+# Inicio aporte William Pacalla
 # Literales (numeros, Char, String) y delimitadores
 # ------------------------------------------------------------
+
+tokens += [
+    'INT_LIT', 'LONG_LIT', 'DOUBLE_LIT', 'FLOAT_LIT', 'CHAR_LIT', 'STRING_LIT',
+    'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE', 'LBRACKET', 'RBRACKET',
+    'COMA', 'DOS_PUNTOS', 'PUNTO', 'PUNTO_COMA',
+]
+
+
+# Los numeros van como funciones porque PLY prueba las funciones en el orden
+# en que estan escritas. Primero los que tienen sufijo o decimales, si no
+# "2.5f" se partiria en 2 . 5 f
+def t_FLOAT_LIT(t):
+    r'\d[\d_]*(\.\d[\d_]*)?[fF]'
+    return t
+
+
+def t_DOUBLE_LIT(t):
+    r'\d[\d_]*\.\d[\d_]*'
+    return t
+
+
+def t_LONG_LIT(t):
+    r'\d[\d_]*L'
+    return t
+
+
+def t_INT_LIT(t):
+    r'\d[\d_]*'
+    return t
+
+
+# Char: un solo caracter entre comillas simples o un escape como '\n'
+def t_CHAR_LIT(t):
+    r"'([^'\\\n]|\\.)'"
+    return t
+
+
+# String entre comillas dobles. Si tiene $nombre o ${...} adentro igual queda
+# como un solo token
+def t_STRING_LIT(t):
+    r'"([^"\\\n]|\\.)*"'
+    return t
+
+
+# Si las comillas no se cierran en la misma linea se reporta el error
+def t_ignore_STRING_SIN_CERRAR(t):
+    r'"([^"\\\n]|\\.)*'
+    col = find_column(t.lexer.lexdata, t)
+    t.lexer.errores.append(
+        (t.lineno, col, t.value,
+         f'Error léxico (línea {t.lineno}, col. {col}): el texto {t.value} no tiene comilla de cierre'))
+
+
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
+t_LBRACE = r'\{'
+t_RBRACE = r'\}'
+t_LBRACKET = r'\['
+t_RBRACKET = r'\]'
+t_COMA = r','
+t_DOS_PUNTOS = r':'
+t_PUNTO = r'\.'
+t_PUNTO_COMA = r';'
+
 
 # ------------------------------------------------------------
 # Fin aporte Willian Pacalla
