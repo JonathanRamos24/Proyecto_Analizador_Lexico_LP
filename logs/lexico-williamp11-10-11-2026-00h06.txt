@@ -1,0 +1,192 @@
+KotLex - Analizador lexico
+Archivo: algoritmos/algoritmo3.kt
+Usuario: williamp11
+Fecha:   10/11/2026 00:06:37
+
+#    Linea  Col   Token           Lexema
+1    4      1     CONST           const
+2    4      7     VAL             val
+3    4      11    ID              MAX_FALTAS
+4    4      24    INT_LIT         4
+5    6      1     FUN             fun
+6    6      5     ID              main
+7    6      9     LPAREN          (
+8    6      10    RPAREN          )
+9    6      12    LBRACE          {
+10   7      5     VAL             val
+11   7      9     ID              asistentes
+12   7      22    SETOF           setOf
+13   7      27    LPAREN          (
+14   7      28    STRING_LIT      "Ana"
+15   7      33    COMA            ,
+16   7      35    STRING_LIT      "Luis"
+17   7      41    COMA            ,
+18   7      43    STRING_LIT      "Maria"
+19   7      50    COMA            ,
+20   7      52    STRING_LIT      "Ana"
+21   7      57    RPAREN          )
+22   8      5     VAL             val
+23   8      9     ID              faltas
+24   8      18    LISTOF          listOf
+25   8      24    LPAREN          (
+26   8      25    INT_LIT         1
+27   8      26    COMA            ,
+28   8      28    INT_LIT         3
+29   8      29    COMA            ,
+30   8      31    INT_LIT         5
+31   8      32    COMA            ,
+32   8      34    INT_LIT         0
+33   8      35    RPAREN          )
+34   9      5     VAL             val
+35   9      9     ID              totalClases
+36   9      23    INT_LIT         16
+37   10     5     VAL             val
+38   10     9     ID              porcentajeMinimo
+39   10     28    DOUBLE_LIT      0.75
+40   11     5     VAL             val
+41   11     9     ID              peso
+42   11     16    FLOAT_LIT       2.5f
+43   12     5     VAL             val
+44   12     9     ID              creditos
+45   12     20    INT_LIT         1_000
+46   13     5     VAL             val
+47   13     9     ID              poblacion
+48   13     21    LONG_LIT        9000000000L
+49   14     5     VAL             val
+50   14     9     ID              inicial
+51   14     16    DOS_PUNTOS      :
+52   14     18    ID              Char
+53   14     25    CHAR_LIT        'W'
+54   15     5     VAL             val
+55   15     9     ID              salto
+56   15     17    CHAR_LIT        '\n'
+57   16     5     VAL             val
+58   16     9     ID              doble
+59   16     17    LBRACE          {
+60   16     19    ID              x
+61   16     20    DOS_PUNTOS      :
+62   16     22    ID              Int
+63   16     29    ID              x
+64   16     33    INT_LIT         2
+65   16     35    RBRACE          }
+66   18     5     VAR             var
+67   18     9     ID              clasesDadas
+68   18     23    INT_LIT         0
+69   19     5     FOR             for
+70   19     9     LPAREN          (
+71   19     10    ID              i
+72   19     12    IN              in
+73   19     15    INT_LIT         1
+74   19     16    PUNTO           .
+75   19     17    PUNTO           .
+76   19     18    ID              totalClases
+77   19     29    RPAREN          )
+78   19     31    LBRACE          {
+79   20     9     IF              if
+80   20     12    LPAREN          (
+81   20     13    ID              i
+82   20     17    INT_LIT         4
+83   20     22    INT_LIT         0
+84   20     23    RPAREN          )
+85   20     25    CONTINUE        continue
+86   21     9     ID              clasesDadas
+87   22     5     RBRACE          }
+88   24     5     VAR             var
+89   24     9     ID              aprobados
+90   24     21    INT_LIT         0
+91   25     5     FOR             for
+92   25     9     LPAREN          (
+93   25     10    ID              f
+94   25     12    IN              in
+95   25     15    ID              faltas
+96   25     21    RPAREN          )
+97   25     23    LBRACE          {
+98   26     9     IF              if
+99   26     12    LPAREN          (
+100  26     13    ID              f
+101  26     17    INT_LIT         10
+102  26     19    RPAREN          )
+103  26     21    BREAK           break
+104  27     9     VAL             val
+105  27     13    ID              asistencia
+106  27     26    LPAREN          (
+107  27     27    ID              totalClases
+108  27     41    ID              f
+109  27     42    RPAREN          )
+110  27     43    PUNTO           .
+111  27     44    ID              toDouble
+112  27     52    LPAREN          (
+113  27     53    RPAREN          )
+114  27     57    ID              totalClases
+115  28     9     VAL             val
+116  28     13    ID              aprueba
+117  28     23    ID              asistencia
+118  28     37    ID              porcentajeMinimo
+119  28     57    ID              f
+120  28     62    ID              MAX_FALTAS
+121  29     9     IF              if
+122  29     12    LPAREN          (
+123  29     13    ID              aprueba
+124  29     20    RPAREN          )
+125  29     22    ID              aprobados
+126  30     5     RBRACE          }
+127  32     5     PRINTLN         println
+128  32     12    LPAREN          (
+129  32     13    STRING_LIT      "Registro \"Lenguajes\" de $inicial$salto"
+130  32     55    RPAREN          )
+131  32     56    PUNTO_COMA      ;
+132  33     5     PRINTLN         println
+133  33     12    LPAREN          (
+134  33     13    STRING_LIT      "Estudiantes unicos: ${asistentes.size}"
+135  33     53    RPAREN          )
+136  34     5     PRINTLN         println
+137  34     12    LPAREN          (
+138  34     13    STRING_LIT      "Primera falta: ${faltas[0]}, clases dadas: $clasesDadas"
+139  34     70    RPAREN          )
+140  35     5     PRINTLN         println
+141  35     12    LPAREN          (
+142  35     13    STRING_LIT      "Aprobados: $aprobados, el doble: ${doble(aprobados)}"
+143  35     67    RPAREN          )
+144  36     5     PRINTLN         println
+145  36     12    LPAREN          (
+146  36     13    STRING_LIT      "Datos: $peso $creditos $poblacion"
+147  36     48    RPAREN          )
+148  37     1     RBRACE          }
+
+Errores (34):
+Error léxico (línea 4, col. 22): carácter no reconocido "=".
+Error léxico (línea 7, col. 20): carácter no reconocido "=".
+Error léxico (línea 8, col. 16): carácter no reconocido "=".
+Error léxico (línea 9, col. 21): carácter no reconocido "=".
+Error léxico (línea 10, col. 26): carácter no reconocido "=".
+Error léxico (línea 11, col. 14): carácter no reconocido "=".
+Error léxico (línea 12, col. 18): carácter no reconocido "=".
+Error léxico (línea 13, col. 19): carácter no reconocido "=".
+Error léxico (línea 14, col. 23): carácter no reconocido "=".
+Error léxico (línea 15, col. 15): carácter no reconocido "=".
+Error léxico (línea 16, col. 15): carácter no reconocido "=".
+Error léxico (línea 16, col. 26): carácter no reconocido "-".
+Error léxico (línea 16, col. 27): carácter no reconocido ">".
+Error léxico (línea 16, col. 31): carácter no reconocido "*".
+Error léxico (línea 18, col. 21): carácter no reconocido "=".
+Error léxico (línea 20, col. 15): carácter no reconocido "%".
+Error léxico (línea 20, col. 19): carácter no reconocido "=".
+Error léxico (línea 20, col. 20): carácter no reconocido "=".
+Error léxico (línea 21, col. 20): carácter no reconocido "+".
+Error léxico (línea 21, col. 21): carácter no reconocido "+".
+Error léxico (línea 24, col. 19): carácter no reconocido "=".
+Error léxico (línea 26, col. 15): carácter no reconocido ">".
+Error léxico (línea 27, col. 24): carácter no reconocido "=".
+Error léxico (línea 27, col. 39): carácter no reconocido "-".
+Error léxico (línea 27, col. 55): carácter no reconocido "/".
+Error léxico (línea 28, col. 21): carácter no reconocido "=".
+Error léxico (línea 28, col. 34): carácter no reconocido ">".
+Error léxico (línea 28, col. 35): carácter no reconocido "=".
+Error léxico (línea 28, col. 54): carácter no reconocido "&".
+Error léxico (línea 28, col. 55): carácter no reconocido "&".
+Error léxico (línea 28, col. 59): carácter no reconocido "<".
+Error léxico (línea 28, col. 60): carácter no reconocido "=".
+Error léxico (línea 29, col. 31): carácter no reconocido "+".
+Error léxico (línea 29, col. 32): carácter no reconocido "+".
+
+Total: 148 tokens validos, 34 errores
