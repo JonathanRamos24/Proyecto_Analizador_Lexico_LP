@@ -1,6 +1,6 @@
 # KotLex - Analizador lexico para un subconjunto de Kotlin usando PLY
 # Lenguajes de Programacion
-# Integrantes: Jonathan Ramos, Miguel Galarza, Willian Pacalla
+# Integrantes: Jonathan Ramos, Miguel Galarza, William Pacalla
 #
 # Uso:   python lexer.py <archivo.kt> <usuarioGit>
 # Ej:    python lexer.py algoritmos/algoritmo1.kt JonathanRamos24
