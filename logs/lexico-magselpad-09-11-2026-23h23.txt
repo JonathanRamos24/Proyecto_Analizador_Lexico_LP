@@ -1,0 +1,401 @@
+KotLex - Analizador lexico
+Archivo: algoritmos/algoritmo2.kt
+Usuario: magselpad
+Fecha:   09/11/2026 23:23:19
+
+#    Linea  Col   Token           Lexema
+1    5      1     FUN             fun
+2    5      5     ID              saludar
+3    5      13    ID              nombre
+4    5      21    ID              String
+5    5      28    ASSIGN          =
+6    5      31    ID              Mundo
+7    5      39    ID              veces
+8    5      46    ID              Int
+9    5      50    ASSIGN          =
+10   6      5     VAR             var
+11   6      9     ID              i
+12   6      11    ASSIGN          =
+13   7      5     WHILE           while
+14   7      12    ID              i
+15   7      14    LT              <
+16   7      16    ID              veces
+17   8      9     PRINTLN         println
+18   8      18    ID              Hola
+19   8      25    PLUS            +
+20   8      27    ID              nombre
+21   9      9     ID              i
+22   9      10    INC             ++
+23   13     1     FUN             fun
+24   13     5     ID              descuento
+25   13     15    ID              categoria
+26   13     26    ID              String
+27   13     35    ID              Int
+28   14     5     WHEN            when
+29   14     11    ID              categoria
+30   15     10    ID              A
+31   15     15    ID              B
+32   15     18    MINUS           -
+33   15     19    GT              >
+34   15     21    RETURN          return
+35   16     10    ID              C
+36   16     13    MINUS           -
+37   16     14    GT              >
+38   16     16    RETURN          return
+39   17     9     ELSE            else
+40   17     14    MINUS           -
+41   17     15    GT              >
+42   17     17    RETURN          return
+43   21     1     FUN             fun
+44   21     5     ID              main
+45   22     5     VAR             var
+46   22     9     ID              precio
+47   22     16    ASSIGN          =
+48   23     5     VAR             var
+49   23     9     ID              cantidad
+50   23     18    ASSIGN          =
+51   24     5     VAR             var
+52   24     9     ID              contador
+53   24     18    ASSIGN          =
+54   25     5     VAL             val
+55   25     9     ID              edades
+56   25     16    ASSIGN          =
+57   25     18    MAPOF           mapOf
+58   25     25    ID              Ana
+59   25     30    ID              to
+60   25     38    ID              Luis
+61   25     44    ID              to
+62   25     52    ID              Eva
+63   25     57    ID              to
+64   26     5     VAL             val
+65   26     9     ID              vacio
+66   26     16    ID              Map
+67   26     19    LT              <
+68   26     20    ID              String
+69   26     28    ID              Int
+70   26     31    GT              >
+71   26     33    ASSIGN          =
+72   26     35    MAPOF           mapOf
+73   28     5     VAR             var
+74   28     9     ID              total
+75   28     15    ASSIGN          =
+76   28     18    ID              precio
+77   28     25    TIMES           *
+78   28     27    ID              cantidad
+79   28     37    MINUS           -
+80   28     39    ID              descuento
+81   28     50    ID              A
+82   28     54    MOD             %
+83   29     5     ID              total
+84   29     11    ASSIGN          =
+85   29     13    ID              total
+86   29     19    PLUS            +
+87   29     24    DIVIDE          /
+88   29     28    MINUS           -
+89   29     32    TIMES           *
+90   30     5     ID              total
+91   30     11    PLUS_ASSIGN     +=
+92   31     5     ID              total
+93   31     11    MINUS_ASSIGN    -=
+94   32     5     ID              total
+95   32     11    TIMES_ASSIGN    *=
+96   33     5     ID              total
+97   33     11    DIV_ASSIGN      /=
+98   34     5     ID              cantidad
+99   34     14    MOD_ASSIGN      %=
+100  35     5     ID              contador
+101  35     13    INC             ++
+102  36     5     ID              contador
+103  36     13    DEC             --
+104  37     5     VAL             val
+105  37     9     ID              negativo
+106  37     18    ASSIGN          =
+107  37     20    MINUS           -
+108  37     21    ID              total
+109  39     5     VAL             val
+110  39     9     ID              dia
+111  39     13    ASSIGN          =
+112  40     5     WHEN            when
+113  40     11    ID              dia
+114  41     14    MINUS           -
+115  41     15    GT              >
+116  41     17    PRINTLN         println
+117  41     26    ID              Fin
+118  41     30    ID              de
+119  41     33    ID              semana
+120  42     9     IN              in
+121  42     13    RANGE           ..
+122  42     17    MINUS           -
+123  42     18    GT              >
+124  42     20    PRINTLN         println
+125  42     29    ID              Laboral
+126  43     9     NOT_IN          !in
+127  43     14    RANGE           ..
+128  43     18    MINUS           -
+129  43     19    GT              >
+130  43     21    PRINTLN         println
+131  43     30    ID              Invalido
+132  44     9     ELSE            else
+133  44     14    MINUS           -
+134  44     15    GT              >
+135  44     17    PRINTLN         println
+136  44     26    ID              Sabado
+137  47     5     VAL             val
+138  47     9     ID              clave
+139  47     15    ASSIGN          =
+140  47     18    ID              Ana
+141  48     5     VAL             val
+142  48     9     ID              edad
+143  48     14    ASSIGN          =
+144  48     16    ID              edades
+145  48     23    ID              clave
+146  48     30    ELVIS           ?:
+147  49     5     VAL             val
+148  49     9     ID              texto
+149  49     16    ID              Any
+150  49     20    ASSIGN          =
+151  49     22    ID              edad
+152  50     5     IF              if
+153  50     9     ID              texto
+154  50     15    IS              is
+155  50     18    ID              Int
+156  50     22    AND             &&
+157  50     25    ID              texto
+158  50     31    NOT_IS          !is
+159  50     35    ID              String
+160  51     9     PRINTLN         println
+161  51     18    ID              Es
+162  51     21    ID              entero
+163  53     5     VAL             val
+164  53     9     ID              maybe
+165  53     15    ASSIGN          =
+166  53     17    ID              edades
+167  53     24    ID              get
+168  53     29    ID              Luis
+169  53     35    SAFE_CALL       ?.
+170  53     37    ID              toString
+171  54     5     VAL             val
+172  54     9     ID              seguro
+173  54     16    ASSIGN          =
+174  54     18    ID              maybe
+175  54     23    NOT_NULL        !!
+176  54     26    ID              length
+177  55     5     VAL             val
+178  55     9     ID              esIgual
+179  55     17    ASSIGN          =
+180  55     20    ID              seguro
+181  55     27    EQ              ==
+182  55     33    OR              ||
+183  55     37    ID              seguro
+184  55     44    NE              !=
+185  56     5     VAL             val
+186  56     9     ID              cmp
+187  56     13    ASSIGN          =
+188  56     15    ID              precio
+189  56     22    GT              >
+190  56     29    AND             &&
+191  56     32    ID              precio
+192  56     39    GE              >=
+193  56     46    AND             &&
+194  56     49    ID              cantidad
+195  56     58    LT              <
+196  56     62    AND             &&
+197  56     65    ID              cantidad
+198  56     74    LE              <=
+199  57     5     ID              saludar
+200  58     5     ID              saludar
+201  58     14    ID              Kotlin
+202  59     5     VAL             val
+203  59     9     ID              casteo
+204  59     16    ASSIGN          =
+205  59     18    ID              texto
+206  59     24    AS              as
+207  59     27    ID              Int
+208  60     5     PRINT           print
+209  60     11    ID              casteo
+210  61     5     PRINTLN         println
+211  61     13    ID              esIgual
+212  62     5     PRINTLN         println
+213  62     13    ID              cmp
+214  63     5     PRINTLN         println
+215  63     13    ID              negativo
+216  64     5     PRINTLN         println
+217  64     13    ID              vacio
+
+Errores (174):
+Error léxico (línea 5, col. 12): carácter no reconocido "(".
+Error léxico (línea 5, col. 19): carácter no reconocido ":".
+Error léxico (línea 5, col. 30): carácter no reconocido """.
+Error léxico (línea 5, col. 36): carácter no reconocido """.
+Error léxico (línea 5, col. 37): carácter no reconocido ",".
+Error léxico (línea 5, col. 44): carácter no reconocido ":".
+Error léxico (línea 5, col. 52): carácter no reconocido "1".
+Error léxico (línea 5, col. 53): carácter no reconocido ")".
+Error léxico (línea 5, col. 55): carácter no reconocido "{".
+Error léxico (línea 6, col. 13): carácter no reconocido "0".
+Error léxico (línea 7, col. 11): carácter no reconocido "(".
+Error léxico (línea 7, col. 21): carácter no reconocido ")".
+Error léxico (línea 7, col. 23): carácter no reconocido "{".
+Error léxico (línea 8, col. 16): carácter no reconocido "(".
+Error léxico (línea 8, col. 17): carácter no reconocido """.
+Error léxico (línea 8, col. 23): carácter no reconocido """.
+Error léxico (línea 8, col. 33): carácter no reconocido ")".
+Error léxico (línea 10, col. 5): carácter no reconocido "}".
+Error léxico (línea 11, col. 1): carácter no reconocido "}".
+Error léxico (línea 13, col. 14): carácter no reconocido "(".
+Error léxico (línea 13, col. 24): carácter no reconocido ":".
+Error léxico (línea 13, col. 32): carácter no reconocido ")".
+Error léxico (línea 13, col. 33): carácter no reconocido ":".
+Error léxico (línea 13, col. 39): carácter no reconocido "{".
+Error léxico (línea 14, col. 10): carácter no reconocido "(".
+Error léxico (línea 14, col. 20): carácter no reconocido ")".
+Error léxico (línea 14, col. 22): carácter no reconocido "{".
+Error léxico (línea 15, col. 9): carácter no reconocido """.
+Error léxico (línea 15, col. 11): carácter no reconocido """.
+Error léxico (línea 15, col. 12): carácter no reconocido ",".
+Error léxico (línea 15, col. 14): carácter no reconocido """.
+Error léxico (línea 15, col. 16): carácter no reconocido """.
+Error léxico (línea 15, col. 28): carácter no reconocido "1".
+Error léxico (línea 15, col. 29): carácter no reconocido "0".
+Error léxico (línea 16, col. 9): carácter no reconocido """.
+Error léxico (línea 16, col. 11): carácter no reconocido """.
+Error léxico (línea 16, col. 23): carácter no reconocido "5".
+Error léxico (línea 17, col. 24): carácter no reconocido "0".
+Error léxico (línea 18, col. 5): carácter no reconocido "}".
+Error léxico (línea 19, col. 1): carácter no reconocido "}".
+Error léxico (línea 21, col. 9): carácter no reconocido "(".
+Error léxico (línea 21, col. 10): carácter no reconocido ")".
+Error léxico (línea 21, col. 12): carácter no reconocido "{".
+Error léxico (línea 22, col. 18): carácter no reconocido "2".
+Error léxico (línea 22, col. 19): carácter no reconocido "5".
+Error léxico (línea 22, col. 20): carácter no reconocido ".".
+Error léxico (línea 22, col. 21): carácter no reconocido "5".
+Error léxico (línea 23, col. 20): carácter no reconocido "4".
+Error léxico (línea 24, col. 20): carácter no reconocido "0".
+Error léxico (línea 25, col. 23): carácter no reconocido "(".
+Error léxico (línea 25, col. 24): carácter no reconocido """.
+Error léxico (línea 25, col. 28): carácter no reconocido """.
+Error léxico (línea 25, col. 33): carácter no reconocido "2".
+Error léxico (línea 25, col. 34): carácter no reconocido "0".
+Error léxico (línea 25, col. 35): carácter no reconocido ",".
+Error léxico (línea 25, col. 37): carácter no reconocido """.
+Error léxico (línea 25, col. 42): carácter no reconocido """.
+Error léxico (línea 25, col. 47): carácter no reconocido "2".
+Error léxico (línea 25, col. 48): carácter no reconocido "2".
+Error léxico (línea 25, col. 49): carácter no reconocido ",".
+Error léxico (línea 25, col. 51): carácter no reconocido """.
+Error léxico (línea 25, col. 55): carácter no reconocido """.
+Error léxico (línea 25, col. 60): carácter no reconocido "3".
+Error léxico (línea 25, col. 61): carácter no reconocido "1".
+Error léxico (línea 25, col. 62): carácter no reconocido ")".
+Error léxico (línea 26, col. 14): carácter no reconocido ":".
+Error léxico (línea 26, col. 26): carácter no reconocido ",".
+Error léxico (línea 26, col. 40): carácter no reconocido "(".
+Error léxico (línea 26, col. 41): carácter no reconocido ")".
+Error léxico (línea 28, col. 17): carácter no reconocido "(".
+Error léxico (línea 28, col. 35): carácter no reconocido ")".
+Error léxico (línea 28, col. 48): carácter no reconocido "(".
+Error léxico (línea 28, col. 49): carácter no reconocido """.
+Error léxico (línea 28, col. 51): carácter no reconocido """.
+Error léxico (línea 28, col. 52): carácter no reconocido ")".
+Error léxico (línea 28, col. 56): carácter no reconocido "5".
+Error léxico (línea 29, col. 21): carácter no reconocido "1".
+Error léxico (línea 29, col. 22): carácter no reconocido "0".
+Error léxico (línea 29, col. 26): carácter no reconocido "2".
+Error léxico (línea 29, col. 30): carácter no reconocido "3".
+Error léxico (línea 29, col. 34): carácter no reconocido "4".
+Error léxico (línea 30, col. 14): carácter no reconocido "1".
+Error léxico (línea 30, col. 15): carácter no reconocido ".".
+Error léxico (línea 30, col. 16): carácter no reconocido "5".
+Error léxico (línea 31, col. 14): carácter no reconocido "0".
+Error léxico (línea 31, col. 15): carácter no reconocido ".".
+Error léxico (línea 31, col. 16): carácter no reconocido "5".
+Error léxico (línea 32, col. 14): carácter no reconocido "2".
+Error léxico (línea 33, col. 14): carácter no reconocido "4".
+Error léxico (línea 34, col. 17): carácter no reconocido "3".
+Error léxico (línea 39, col. 15): carácter no reconocido "3".
+Error léxico (línea 40, col. 10): carácter no reconocido "(".
+Error léxico (línea 40, col. 14): carácter no reconocido ")".
+Error léxico (línea 40, col. 16): carácter no reconocido "{".
+Error léxico (línea 41, col. 9): carácter no reconocido "1".
+Error léxico (línea 41, col. 10): carácter no reconocido ",".
+Error léxico (línea 41, col. 12): carácter no reconocido "7".
+Error léxico (línea 41, col. 24): carácter no reconocido "(".
+Error léxico (línea 41, col. 25): carácter no reconocido """.
+Error léxico (línea 41, col. 39): carácter no reconocido """.
+Error léxico (línea 41, col. 40): carácter no reconocido ")".
+Error léxico (línea 42, col. 12): carácter no reconocido "2".
+Error léxico (línea 42, col. 15): carácter no reconocido "5".
+Error léxico (línea 42, col. 27): carácter no reconocido "(".
+Error léxico (línea 42, col. 28): carácter no reconocido """.
+Error léxico (línea 42, col. 36): carácter no reconocido """.
+Error léxico (línea 42, col. 37): carácter no reconocido ")".
+Error léxico (línea 43, col. 13): carácter no reconocido "1".
+Error léxico (línea 43, col. 16): carácter no reconocido "7".
+Error léxico (línea 43, col. 28): carácter no reconocido "(".
+Error léxico (línea 43, col. 29): carácter no reconocido """.
+Error léxico (línea 43, col. 38): carácter no reconocido """.
+Error léxico (línea 43, col. 39): carácter no reconocido ")".
+Error léxico (línea 44, col. 24): carácter no reconocido "(".
+Error léxico (línea 44, col. 25): carácter no reconocido """.
+Error léxico (línea 44, col. 32): carácter no reconocido """.
+Error léxico (línea 44, col. 33): carácter no reconocido ")".
+Error léxico (línea 45, col. 5): carácter no reconocido "}".
+Error léxico (línea 47, col. 17): carácter no reconocido """.
+Error léxico (línea 47, col. 21): carácter no reconocido """.
+Error léxico (línea 48, col. 22): carácter no reconocido "[".
+Error léxico (línea 48, col. 28): carácter no reconocido "]".
+Error léxico (línea 48, col. 33): carácter no reconocido "0".
+Error léxico (línea 49, col. 14): carácter no reconocido ":".
+Error léxico (línea 50, col. 8): carácter no reconocido "(".
+Error léxico (línea 50, col. 41): carácter no reconocido ")".
+Error léxico (línea 50, col. 43): carácter no reconocido "{".
+Error léxico (línea 51, col. 16): carácter no reconocido "(".
+Error léxico (línea 51, col. 17): carácter no reconocido """.
+Error léxico (línea 51, col. 27): carácter no reconocido """.
+Error léxico (línea 51, col. 28): carácter no reconocido ")".
+Error léxico (línea 52, col. 5): carácter no reconocido "}".
+Error léxico (línea 53, col. 23): carácter no reconocido ".".
+Error léxico (línea 53, col. 27): carácter no reconocido "(".
+Error léxico (línea 53, col. 28): carácter no reconocido """.
+Error léxico (línea 53, col. 33): carácter no reconocido """.
+Error léxico (línea 53, col. 34): carácter no reconocido ")".
+Error léxico (línea 53, col. 45): carácter no reconocido "(".
+Error léxico (línea 53, col. 46): carácter no reconocido ")".
+Error léxico (línea 54, col. 25): carácter no reconocido ".".
+Error léxico (línea 55, col. 19): carácter no reconocido "(".
+Error léxico (línea 55, col. 30): carácter no reconocido "2".
+Error léxico (línea 55, col. 31): carácter no reconocido ")".
+Error léxico (línea 55, col. 36): carácter no reconocido "(".
+Error léxico (línea 55, col. 47): carácter no reconocido "3".
+Error léxico (línea 55, col. 48): carácter no reconocido ")".
+Error léxico (línea 56, col. 24): carácter no reconocido "1".
+Error léxico (línea 56, col. 25): carácter no reconocido "0".
+Error léxico (línea 56, col. 26): carácter no reconocido ".".
+Error léxico (línea 56, col. 27): carácter no reconocido "0".
+Error léxico (línea 56, col. 42): carácter no reconocido "5".
+Error léxico (línea 56, col. 43): carácter no reconocido ".".
+Error léxico (línea 56, col. 44): carácter no reconocido "0".
+Error léxico (línea 56, col. 60): carácter no reconocido "9".
+Error léxico (línea 56, col. 77): carácter no reconocido "8".
+Error léxico (línea 57, col. 12): carácter no reconocido "(".
+Error léxico (línea 57, col. 13): carácter no reconocido ")".
+Error léxico (línea 58, col. 12): carácter no reconocido "(".
+Error léxico (línea 58, col. 13): carácter no reconocido """.
+Error léxico (línea 58, col. 20): carácter no reconocido """.
+Error léxico (línea 58, col. 21): carácter no reconocido ",".
+Error léxico (línea 58, col. 23): carácter no reconocido "2".
+Error léxico (línea 58, col. 24): carácter no reconocido ")".
+Error léxico (línea 60, col. 10): carácter no reconocido "(".
+Error léxico (línea 60, col. 17): carácter no reconocido ")".
+Error léxico (línea 61, col. 12): carácter no reconocido "(".
+Error léxico (línea 61, col. 20): carácter no reconocido ")".
+Error léxico (línea 62, col. 12): carácter no reconocido "(".
+Error léxico (línea 62, col. 16): carácter no reconocido ")".
+Error léxico (línea 63, col. 12): carácter no reconocido "(".
+Error léxico (línea 63, col. 21): carácter no reconocido ")".
+Error léxico (línea 64, col. 12): carácter no reconocido "(".
+Error léxico (línea 64, col. 18): carácter no reconocido ")".
+Error léxico (línea 65, col. 1): carácter no reconocido "}".
+
+Total: 217 tokens validos, 174 errores

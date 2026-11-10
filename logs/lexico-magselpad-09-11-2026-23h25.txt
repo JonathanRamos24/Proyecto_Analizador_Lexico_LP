@@ -1,0 +1,46 @@
+KotLex - Analizador lexico
+Archivo: pruebas/errores2.kt
+Usuario: magselpad
+Fecha:   09/11/2026 23:25:22
+
+#    Linea  Col   Token           Lexema
+1    2      1     ID              a
+2    2      5     ID              b
+3    3      1     ID              c
+4    3      5     ID              d
+5    4      1     ID              e
+6    4      5     ID              f
+7    5      1     ID              g
+8    5      5     ID              h
+9    6      1     ID              i
+10   6      5     ID              j
+11   7      1     ID              total
+12   7      7     ASSIGN          =
+13   7      9     ID              a
+14   7      11    PLUS            +
+15   7      13    ID              b
+16   7      17    ID              suma
+17   8      1     ID              k
+18   8      3     ASSIGN          =
+19   8      5     ID              a
+20   8      9     ID              b
+21   9      1     ID              l
+22   9      3     ASSIGN          =
+23   9      6     ID              m
+24   10     1     ID              suma
+25   10     6     ASSIGN          =
+26   10     8     ID              a
+27   10     10    PLUS            +
+28   10     12    ID              b
+
+Errores (8):
+Error léxico (línea 2, col. 3): carácter no reconocido "~".
+Error léxico (línea 3, col. 3): carácter no reconocido "^".
+Error léxico (línea 4, col. 3): carácter no reconocido "&".
+Error léxico (línea 5, col. 3): carácter no reconocido "|".
+Error léxico (línea 6, col. 3): carácter no reconocido "\".
+Error léxico (línea 7, col. 15): carácter no reconocido "#". Kotlin no usa "#", para comentarios use //
+Error léxico (línea 8, col. 7): carácter no reconocido "@".
+Error léxico (línea 9, col. 5): carácter no reconocido "$".
+
+Total: 28 tokens validos, 8 errores

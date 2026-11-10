@@ -104,9 +104,84 @@ def t_ID(t):
 
 
 # ------------------------------------------------------------
-# Inicio aporte Miguel Galarza
+# Inicio aporte Miguel Galarza (magselpad)
 # Operadores
 # ------------------------------------------------------------
+
+tokens_operadores = [
+    # aritmeticos
+    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MOD', 'INC', 'DEC',
+    # asignacion
+    'ASSIGN', 'PLUS_ASSIGN', 'MINUS_ASSIGN', 'TIMES_ASSIGN',
+    'DIV_ASSIGN', 'MOD_ASSIGN',
+    # comparacion
+    'EQ', 'NE', 'LT', 'GT', 'LE', 'GE',
+    # logicos
+    'AND', 'OR', 'NOT',
+    # rango y pertenencia (in e is ya son palabras reservadas)
+    'RANGE', 'NOT_IN', 'NOT_IS',
+    # nulos
+    'SAFE_CALL', 'ELVIS', 'NOT_NULL', 'QUESTION',
+]
+
+# se agregan a la lista de tokens que arranco Jonathan
+tokens += tokens_operadores
+
+
+# !in y !is se definen como funcion para que se revisen antes que '!'
+# (las funciones se evaluan primero que las reglas de tipo string).
+# El \b evita que "!inicio" se lea como "!in" + "icio".
+def t_NOT_IN(t):
+    r'!in\b'
+    return t
+
+
+def t_NOT_IS(t):
+    r'!is\b'
+    return t
+
+
+# PLY ordena las reglas string de la expresion regular mas larga a la mas
+# corta, por eso '++' se prueba antes que '+', '!!' antes que '!', etc.
+
+# Aritmeticos: suma, resta, multiplicacion, division, residuo
+t_PLUS = r'\+'
+t_MINUS = r'-'
+t_TIMES = r'\*'
+t_DIVIDE = r'/'
+t_MOD = r'%'
+t_INC = r'\+\+'        # incremento
+t_DEC = r'--'           # decremento
+
+# Asignacion
+t_ASSIGN = r'='
+t_PLUS_ASSIGN = r'\+='
+t_MINUS_ASSIGN = r'-='
+t_TIMES_ASSIGN = r'\*='
+t_DIV_ASSIGN = r'/='
+t_MOD_ASSIGN = r'%='
+
+# Comparacion
+t_EQ = r'=='
+t_NE = r'!='
+t_LT = r'<'
+t_GT = r'>'
+t_LE = r'<='
+t_GE = r'>='
+
+# Logicos: y, o, negacion
+t_AND = r'&&'
+t_OR = r'\|\|'
+t_NOT = r'!'
+
+# Rango (1..10)
+t_RANGE = r'\.\.'
+
+# Nulos: llamada segura, valor por defecto (elvis) y asercion no nula
+t_SAFE_CALL = r'\?\.'
+t_ELVIS = r'\?:'
+t_NOT_NULL = r'!!'
+t_QUESTION = r'\?'      # tipos anulables, ej: String?
 
 # ------------------------------------------------------------
 # Fin aporte Miguel Galarza

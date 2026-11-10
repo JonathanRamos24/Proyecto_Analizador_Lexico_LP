@@ -1,0 +1,115 @@
+KotLex - Analizador lexico
+Archivo: pruebas/operadores2.kt
+Usuario: magselpad
+Fecha:   09/11/2026 23:24:20
+
+#    Linea  Col   Token           Lexema
+1    3      1     ID              total
+2    3      7     ASSIGN          =
+3    3      9     ID              precio
+4    3      16    TIMES           *
+5    3      18    ID              cantidad
+6    3      27    MINUS           -
+7    3      29    ID              descuento
+8    3      39    MOD             %
+9    3      41    ID              base
+10   4      1     ID              total
+11   4      7     PLUS_ASSIGN     +=
+12   4      10    ID              extra
+13   5      1     ID              total
+14   5      7     MINUS_ASSIGN    -=
+15   5      10    ID              resto
+16   6      1     ID              total
+17   6      7     TIMES_ASSIGN    *=
+18   6      10    ID              factor
+19   7      1     ID              total
+20   7      7     DIV_ASSIGN      /=
+21   7      10    ID              divisor
+22   8      1     ID              total
+23   8      7     MOD_ASSIGN      %=
+24   8      10    ID              modulo
+25   9      1     ID              contador
+26   9      9     INC             ++
+27   10     1     ID              contador
+28   10     9     DEC             --
+29   11     1     ID              resultado
+30   11     11    ASSIGN          =
+31   11     13    ID              a
+32   11     15    PLUS            +
+33   11     17    ID              b
+34   11     19    MINUS           -
+35   11     21    ID              c
+36   11     23    TIMES           *
+37   11     25    ID              d
+38   11     27    DIVIDE          /
+39   11     29    ID              e
+40   11     31    MOD             %
+41   11     33    ID              f
+42   12     1     ID              esMayor
+43   12     9     ASSIGN          =
+44   12     11    ID              a
+45   12     13    GT              >
+46   12     15    ID              b
+47   12     17    AND             &&
+48   12     20    ID              a
+49   12     22    GE              >=
+50   12     25    ID              c
+51   13     1     ID              esMenor
+52   13     9     ASSIGN          =
+53   13     11    ID              a
+54   13     13    LT              <
+55   13     15    ID              b
+56   13     17    OR              ||
+57   13     20    ID              a
+58   13     22    LE              <=
+59   13     25    ID              c
+60   14     1     ID              esIgual
+61   14     9     ASSIGN          =
+62   14     11    ID              a
+63   14     13    EQ              ==
+64   14     16    ID              b
+65   15     1     ID              esDistinto
+66   15     12    ASSIGN          =
+67   15     14    ID              a
+68   15     16    NE              !=
+69   15     19    ID              b
+70   16     1     ID              negado
+71   16     8     ASSIGN          =
+72   16     10    NOT             !
+73   16     11    ID              activo
+74   17     1     ID              x
+75   17     3     IN              in
+76   17     6     ID              rango
+77   18     1     ID              x
+78   18     3     NOT_IN          !in
+79   18     7     ID              rango
+80   19     1     ID              x
+81   19     3     IS              is
+82   19     6     ID              Tipo
+83   20     1     ID              x
+84   20     3     NOT_IS          !is
+85   20     7     ID              Tipo
+86   21     1     ID              rango
+87   21     7     ASSIGN          =
+88   21     9     ID              inicio
+89   21     15    RANGE           ..
+90   21     17    ID              fin
+91   22     1     ID              largo
+92   22     7     ASSIGN          =
+93   22     9     ID              apodo
+94   22     14    SAFE_CALL       ?.
+95   22     16    ID              length
+96   23     1     ID              valor
+97   23     7     ASSIGN          =
+98   23     9     ID              dato
+99   23     14    ELVIS           ?:
+100  23     17    ID              otro
+101  24     1     ID              seguro
+102  24     8     ASSIGN          =
+103  24     10    ID              dato
+104  24     14    NOT_NULL        !!
+
+Errores (0):
+Ninguno
+
+Total: 104 tokens validos, 0 errores
