@@ -45,6 +45,8 @@ reserved = {
     'true': 'TRUE',
     'false': 'FALSE',
     'null': 'NULL',
+    # infija que usa mapOf("a" to 1) (mejora Avance 2)
+    'to': 'TO',
     # En Kotlin estas no son palabras reservadas (son funciones de la libreria
     # estandar), pero las sacamos como tokens aparte porque las usa la gramatica
     'listOf': 'LISTOF',
@@ -197,6 +199,7 @@ tokens += [
     'INT_LIT', 'LONG_LIT', 'DOUBLE_LIT', 'FLOAT_LIT', 'CHAR_LIT', 'STRING_LIT',
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE', 'LBRACKET', 'RBRACKET',
     'COMA', 'DOS_PUNTOS', 'PUNTO', 'PUNTO_COMA',
+    'ARROW',   # -> (when y lambdas), mejora Avance 2
 ]
 
 
@@ -255,6 +258,7 @@ t_COMA = r','
 t_DOS_PUNTOS = r':'
 t_PUNTO = r'\.'
 t_PUNTO_COMA = r';'
+t_ARROW = r'->'
 
 
 # ------------------------------------------------------------
@@ -289,9 +293,15 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-def analizar(codigo):
+# Crea un lexer nuevo con su lista de errores (lo usa tambien el parser.py)
+def crear_lexer():
     lexer = lex.lex()
     lexer.errores = []
+    return lexer
+
+
+def analizar(codigo):
+    lexer = crear_lexer()
     lexer.input(codigo)
 
     resultado = []
