@@ -1,0 +1,21 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_miguel1.kt
+Usuario: magselpad
+Fecha:   13/11/2026 14:21:19
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (0):
+Ninguno
+
+Construcciones reconocidas:
+asignacion                    6
+expresion aritmetica          11
+incremento/decremento         2
+lectura (readln)              1
+literal                       14
+var con inferencia            5
+var con tipo                  2
+
+Resultado: analisis sintactico correcto

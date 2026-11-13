@@ -1,0 +1,27 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_miguel2.kt
+Usuario: magselpad
+Fecha:   13/11/2026 14:22:20
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (0):
+Ninguno
+
+Construcciones reconocidas:
+Map (mapOf)                   2
+acceso a miembro              2
+asignacion                    9
+casting (as)                  1
+elvis                         1
+indice []                     2
+lectura (readln)              1
+literal                       20
+llamada a metodo              1
+rama de when                  7
+rango                         2
+var con inferencia            10
+when                          2
+
+Resultado: analisis sintactico correcto

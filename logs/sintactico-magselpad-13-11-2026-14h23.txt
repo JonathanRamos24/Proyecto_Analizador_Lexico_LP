@@ -1,0 +1,26 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_miguel3_errores.kt
+Usuario: magselpad
+Fecha:   13/11/2026 14:23:21
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (7):
+Error sintáctico (línea 3, col. 1): se encontró "var" pero se esperaba una expresión o un operador
+Error sintáctico (línea 4, col. 3): el lado izquierdo de "=" debe ser una variable, una propiedad o un elemento de lista
+Error sintáctico (línea 5, col. 7): el lado izquierdo de "=" debe ser una variable, una propiedad o un elemento de lista
+Error sintáctico (línea 8, col. 5): se encontró "->" pero se esperaba el fin de la sentencia (salto de línea o ";") o un operador (dentro de un when)
+Error sintáctico (línea 11, col. 9): falta cerrar "(" con ")"
+Error sintáctico (línea 12, col. 8): se encontró "=" pero se esperaba un identificador
+Error sintáctico (línea 14, col. 15): falta cerrar "(" con ")"
+
+Construcciones reconocidas:
+asignacion                    4
+expresion aritmetica          3
+literal                       11
+rama de when                  2
+var con inferencia            1
+when                          1
+
+Resultado: 0 errores lexicos y 7 errores sintacticos
