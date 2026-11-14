@@ -1,0 +1,26 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_william3_errores.kt
+Usuario: williamp11
+Fecha:   14/11/2026 17:56:24
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (10):
+Error sintáctico (línea 4, col. 15): se encontró "{" pero se esperaba ")" para cerrar la condición de un while
+Error sintáctico (línea 7, col. 8): se encontró "1" pero se esperaba "in" (dentro de un for)
+Error sintáctico (línea 10, col. 12): se encontró fin de línea pero se esperaba una expresión o un operador
+Error sintáctico (línea 11, col. 14): se encontró "==" pero se esperaba una expresión o un operador
+Error sintáctico (línea 12, col. 18): se encontró "a" pero se esperaba "(" (dentro de un while)
+Error sintáctico (línea 13, col. 11): se encontró "=" pero se esperaba un identificador
+Error sintáctico (línea 14, col. 18): se encontró "x" pero se esperaba "->" o ","
+Error sintáctico (línea 15, col. 18): se encontró "(" pero se esperaba "," (dentro de setOf)
+Error sintáctico (línea 16, col. 14): se encontró "||" pero se esperaba una expresión o un operador
+Error sintáctico (línea 18, col. 1): se encontró "var" pero se esperaba una expresión o un operador
+
+Construcciones reconocidas:
+incremento/decremento         1
+literal                       2
+var con inferencia            2
+
+Resultado: 0 errores lexicos y 10 errores sintacticos
