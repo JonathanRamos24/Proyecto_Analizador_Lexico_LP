@@ -1,4 +1,4 @@
-// Algoritmo de prueba - Willian Pacalla
+// Algoritmo de prueba - William Pacalla
 // Asistencia de un curso: cuenta estudiantes unicos y quienes aprueban por faltas
 
 const val MAX_FALTAS = 4
