@@ -1,0 +1,31 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_jonathan1.kt
+Usuario: JonathanRamos24
+Fecha:   14/11/2026 22:34:13
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (0):
+Ninguno
+
+Construcciones reconocidas:
+List (listOf)                 2
+Map (mapOf)                   1
+comparacion                   6
+conector logico               1
+expresion aritmetica          1
+if / else                     5
+impresion                     11
+indice []                     1
+lambda                        1
+literal                       25
+literal null                  1
+parametro de lambda           1
+tipo anulable                 1
+tipo funcion                  1
+tipo generico                 2
+val con inferencia            3
+val con tipo                  5
+
+Resultado: analisis sintactico correcto

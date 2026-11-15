@@ -1,0 +1,26 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_jonathan3_errores.kt
+Usuario: JonathanRamos24
+Fecha:   14/11/2026 22:36:18
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (12):
+Error sintáctico (línea 2, col. 12): se encontró "String" pero se esperaba "=" o ":"
+Error sintáctico (línea 3, col. 11): se encontró "=" pero se esperaba un identificador o "("
+Error sintáctico (línea 4, col. 16): se encontró ""Mundo"" pero se esperaba un operador o ")" (dentro de println)
+Error sintáctico (línea 5, col. 7): se encontró ")" pero se esperaba una expresión o un operador (dentro de print)
+Error sintáctico (línea 6, col. 16): se encontró "{" pero se esperaba ")" para cerrar la condición de un if
+Error sintáctico (línea 9, col. 4): se encontró "edad" pero se esperaba "(" (dentro de un if)
+Error sintáctico (línea 10, col. 22): se encontró "2" pero se esperaba un operador o "," o ")" (dentro de listOf)
+Error sintáctico (línea 11, col. 28): se encontró "{" pero se esperaba un identificador o "(" (dentro de una función)
+Error sintáctico (línea 14, col. 5): se encontró "(" pero se esperaba un identificador (dentro de una función)
+Error sintáctico (línea 15, col. 26): se encontró "String" pero se esperaba ":" (dentro de una clase)
+Error sintáctico (línea 16, col. 1): "privado" no es un modificador válido (private, public, protected, internal, open, override, abstract o data)
+Error sintáctico (línea 17, col. 8): se encontró "{" pero se esperaba un identificador (dentro de un object)
+
+Construcciones reconocidas:
+funcion                       1
+
+Resultado: 0 errores lexicos y 12 errores sintacticos

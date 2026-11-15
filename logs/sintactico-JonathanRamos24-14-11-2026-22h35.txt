@@ -1,0 +1,38 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_jonathan2.kt
+Usuario: JonathanRamos24
+Fecha:   14/11/2026 22:35:16
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (0):
+Ninguno
+
+Construcciones reconocidas:
+acceso a miembro              5
+asignacion                    2
+clase                         3
+comparacion                   2
+const val con inferencia      1
+estructura for                1
+expresion aritmetica          5
+funcion                       9
+funcion con tipo de retorno   6
+funcion de una expresion      3
+if                            1
+impresion                     5
+incremento/decremento         1
+literal                       21
+llamada a funcion             5
+llamada a metodo              2
+metodo                        3
+object                        1
+parametro por defecto         2
+propiedad                     8
+return                        5
+tipo generico                 1
+val con inferencia            4
+var con inferencia            2
+
+Resultado: analisis sintactico correcto
