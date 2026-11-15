@@ -12,13 +12,13 @@ Proyecto de Lenguajes de Programación (ESPOL), hecho con Python y PLY.
 - `parser.py`: analizador sintáctico (Avance 2): reglas comunes, manejo de saltos de línea y errores.
 - `estado.py`: funciones compartidas (errores, construcciones reconocidas).
 - `reglas_miguel.py`: **listo**. `readln`, `var`, asignaciones, aritmética, números, `when`, `mapOf`, parámetros por defecto y `vararg`.
-- `reglas_jonathan.py`: **pendiente**. impresión, tipos, `val`, if/else, `listOf`, funciones, return, clases y objetos.
-- `reglas_william.py`: **pendiente**. literales (menos Int y Double), comparaciones, `&&` / `||`, `const val`, for/while/do-while, `setOf`, lambdas.
-- `pruebas/`: `sintaxis_miguel1.kt`, `sintaxis_miguel2.kt` (correctas) y `sintaxis_miguel3_errores.kt` (con errores).
+- `reglas_jonathan.py`: **listo**. impresión, tipos, `val`, if/else, `listOf`, funciones, return, clases y objetos.
+- `reglas_william.py`: **listo**. literales (menos Int y Double), comparaciones, `&&` / `||`, `const val`, for/while/do-while, `setOf`, lambdas.
+- `pruebas/`: 3 pruebas por integrante, `sintaxis_<nombre>1.kt` y `sintaxis_<nombre>2.kt` (correctas) y `sintaxis_<nombre>3_errores.kt` (con errores).
 - `logs/`: `lexico-usuario-fecha-hora.txt` y `sintactico-usuario-fecha-hora.txt`.
 
-Los lugares de `parser.py` que cada uno debe conectar están marcados con `PENDIENTE`.
-`tipo` y `declaracion_top : sentencia_simple` son temporales (ver comentarios).
+Cada uno conecta sus reglas desde su archivo (`parser.py` hace `from reglas_x import *`).
+Se aceptan sentencias sueltas a nivel de archivo (como un script `.kts`) porque las pruebas las usan.
 
 ## Uso
 ```

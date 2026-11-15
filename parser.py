@@ -79,15 +79,14 @@ def p_declaracion_top(p):
     '''declaracion_top : declaracion_var
                        | sentencia_simple
                        | error'''
-    # TEMPORAL: se aceptan sentencias sueltas mientras no exista funcion_decl
-    # (para poder probar). Quitar "sentencia_simple" cuando Jonathan la agregue
-    # PENDIENTE (Jonathan): agregar aqui modificadores + funcion_decl,
-    # clase_decl y objeto_decl
+    # Se dejan las sentencias sueltas a nivel de archivo (como en un script
+    # .kts) porque las pruebas de cada integrante las usan.
+    # funcion_decl, clase_decl y objeto_decl estan en reglas_jonathan.py
     estado.recuperar(p)
 
 
 # val / var / const val
-# PENDIENTE: Jonathan agrega "| decl_val" y William agrega "| decl_const"
+# decl_val esta en reglas_jonathan.py y decl_const en reglas_william.py
 def p_declaracion_var(p):
     '''declaracion_var : decl_var'''
 
@@ -131,8 +130,8 @@ def p_sentencia(p):
     '''sentencia : sentencia_simple
                  | declaracion_var
                  | error'''
-    # PENDIENTE: Jonathan agrega "| funcion_decl" y William agrega
-    # "| sentencia_for | sentencia_while | sentencia_do"
+    # funcion_decl (reglas_jonathan.py) y for / while / do-while
+    # (reglas_william.py) se conectan en sus archivos
     estado.recuperar(p)
 
 
@@ -141,7 +140,7 @@ def p_sentencia_simple(p):
                         | asignacion
                         | BREAK
                         | CONTINUE'''
-    # PENDIENTE (Jonathan): agregar "| sentencia_return"
+    # sentencia_return se conecta en reglas_jonathan.py
     if p[1] in ('break', 'continue'):
         estado.registrar(p[1])
 
@@ -152,14 +151,9 @@ def p_cuerpo_ctrl(p):
                    | sentencia_simple'''
 
 
-# ---------- Tipos (version minima) ----------
-# TEMPORAL: Jonathan reemplaza p_tipo por la completa (String?, List<Int>,
-# Map<String, Int>) en reglas_jonathan.py; lista_tipos y tipos_gen_opt
-# (el <Int> de listOf / mapOf / setOf) se pueden quedar aqui
-def p_tipo(p):
-    '''tipo : ID'''
-
-
+# ---------- Tipos ----------
+# "tipo" esta en reglas_jonathan.py; aqui queda la lista de tipos y el <Int>
+# opcional de listOf / mapOf / setOf
 def p_lista_tipos(p):
     '''lista_tipos : tipo
                    | lista_tipos COMA tipo'''
@@ -452,6 +446,16 @@ def activar_recuperacion(p):
         if parser.symstack[i].type == 'LBRACE':
             prof += 1
     flujo.prof = prof
+    # ( o [ que quedaron abiertos en la sentencia que se descarta, ej:
+    # "if (edad >= 18 {": si se quedan en la pila los saltos de linea ya no
+    # separan sentencias y la linea siguiente se salta sin revisar (Jonathan)
+    tope = None
+    if p.type == 'LBRACE' and flujo.pila and flujo.pila[-1][0] == '{':
+        tope = flujo.pila.pop()
+    while flujo.pila and flujo.pila[-1][0] in '([':
+        flujo.pila.pop()
+    if tope is not None:
+        flujo.pila.append(tope)
 
 
 ultimo_error = None   # ultimo token que dio error (para no repetir el mismo)
