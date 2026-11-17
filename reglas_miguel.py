@@ -12,6 +12,7 @@
 from estado import registrar, error_en, recuperar, Valor, tipo_de
 import estado
 import semantico_miguel as sem
+import semantico_jonathan as sem_jonathan
 
 
 # ---------- Numeros ----------
@@ -66,6 +67,7 @@ def p_asignacion(p):
                  'una propiedad o un elemento de lista')
     else:
         sem.verificar_asignacion(p[1], p[2], p[3], p.lineno(2))
+        sem_jonathan.verificar_reasignacion(p[1], p.lineno(2))   # regla Asignacion
 
 
 # ---------- Expresiones aritmeticas ----------
@@ -95,6 +97,7 @@ def p_expr_incremento_prefijo(p):
             | DEC expr %prec UMINUS'''
     registrar('incremento/decremento')
     p[0] = Valor('expr', sem.tipo_unario(p[1], p[2], p.lineno(1)))
+    sem_jonathan.verificar_reasignacion(p[2], p.lineno(1))   # ++x tambien reasigna
 
 
 def p_expr_incremento_sufijo(p):
@@ -102,6 +105,7 @@ def p_expr_incremento_sufijo(p):
             | expr DEC'''
     registrar('incremento/decremento')
     p[0] = Valor('expr', sem.tipo_unario(p[2], p[1], p.lineno(2)))
+    sem_jonathan.verificar_reasignacion(p[1], p.lineno(2))   # x++ tambien reasigna
 
 
 # rango, valor por defecto (elvis), par clave-valor y casting

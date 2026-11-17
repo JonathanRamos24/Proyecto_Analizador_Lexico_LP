@@ -16,10 +16,11 @@ Proyecto de Lenguajes de Programación (ESPOL), hecho con Python y PLY.
 - `reglas_william.py`: **listo**. literales (menos Int y Double), comparaciones, `&&` / `||`, `const val`, for/while/do-while, `setOf`, lambdas.
 - `semantico.py`: analizador semántico (Avance 3). Uso: `python semantico.py archivo.kt usuarioGit`.
 - `semantico_miguel.py`: **listo**. Reglas semánticas de Miguel: Operaciones permitidas y Conversión.
-- `semantico_jonathan.py`: **pendiente**. Identificadores y Asignación (val no reasignable).
+- `semantico_jonathan.py`: **listo**. Reglas semánticas de Jonathan: Identificadores (declarada antes de usarse y dentro de su alcance) y Asignación (val, const val y parámetros no se reasignan).
 - `semantico_william.py`: **pendiente**. Retorno de funciones y break/continue solo en bucles.
 - `pruebas/`: 3 pruebas por integrante, `sintaxis_<nombre>1.kt` y `sintaxis_<nombre>2.kt` (correctas) y `sintaxis_<nombre>3_errores.kt` (con errores).
 - `pruebas/semantico_miguel1.kt` (correcta), `semantico_miguel2.kt` (Operaciones permitidas) y `semantico_miguel3.kt` (Conversión).
+- `pruebas/semantico_jonathan1.kt` (correcta), `semantico_jonathan2.kt` (Identificadores) y `semantico_jonathan3.kt` (Asignación).
 - `logs/`: `lexico-...`, `sintactico-...` y `semantico-usuario-ddmmaaaa-HHhMM.txt`.
 
 La tabla de símbolos (nombre, tipo, mutabilidad, ámbito) está en `estado.py`; los ámbitos siguen a las llaves `{ }`.

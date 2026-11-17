@@ -25,6 +25,7 @@ simbolos = []                # todos los simbolos declarados (para el log)
 ambitos = [{}]               # pila de ambitos; el 0 es el de archivo
 params_pendientes = []       # parametros que entran al ambito del siguiente {
 cierres_pendientes = 0       # } leidas cuyo ambito todavia no se cierra
+limpiar_params = False       # hubo un salto de linea: params_pendientes se borran
 
 
 class Valor(str):
@@ -67,8 +68,9 @@ def buscar(nombre):
     return None
 
 
-def param_pendiente(nombre, tipo):
-    params_pendientes.append((nombre, tipo))
+# mutable: True para los "var" del constructor de una clase (Jonathan)
+def param_pendiente(nombre, tipo, mutable=False):
+    params_pendientes.append((nombre, tipo, mutable))
 
 
 # Los ambitos siguen a las llaves { } del flujo de tokens (ver FlujoTokens).
@@ -76,8 +78,8 @@ def param_pendiente(nombre, tipo):
 # sentencias que estan antes de la } todavia se revisan dentro de su ambito.
 def abrir_ambito(linea=0):
     ambitos.append({})
-    for nombre, tipo in params_pendientes:
-        declarar(nombre, tipo, False, linea)
+    for nombre, tipo, mutable in params_pendientes:
+        declarar(nombre, tipo, mutable, linea)
     params_pendientes.clear()
 
 
@@ -95,7 +97,7 @@ def aplicar_cierres():
 
 
 def reiniciar(texto):
-    global codigo, cierres_pendientes
+    global codigo, cierres_pendientes, limpiar_params
     codigo = texto
     errores.clear()
     construcciones.clear()
@@ -104,6 +106,7 @@ def reiniciar(texto):
     params_pendientes.clear()
     ambitos[:] = [{}]
     cierres_pendientes = 0
+    limpiar_params = False
 
 
 def registrar(nombre):

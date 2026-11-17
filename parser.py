@@ -19,6 +19,7 @@ import ply.yacc as yacc
 
 import estado
 from lexer import tokens as tokens_lexer, reserved, crear_lexer, find_column
+import semantico_jonathan as sem_jonathan
 
 # Reglas de cada integrante (PLY toma todas las funciones p_ de este modulo)
 from reglas_jonathan import *   # noqa: F401,F403
@@ -176,12 +177,14 @@ def p_expr_id(p):
     simbolo = estado.buscar(p[1])
     tipo = estado.tipo_basico(simbolo.tipo) if simbolo else None
     p[0] = estado.Valor('id', tipo, nombre=p[1])
+    sem_jonathan.verificar_identificador(p[1], p.lineno(1))   # regla Identificadores
 
 
 # llamada a funcion: sumar(1, 2)
 def p_expr_llamada(p):
     '''expr : ID LPAREN args_opt RPAREN'''
     estado.registrar('llamada a funcion')
+    sem_jonathan.verificar_funcion(p[1], p.lineno(1))   # regla Identificadores
     p[0] = 'expr'
 
 
@@ -267,7 +270,9 @@ class FlujoTokens:
         elif tok.type == 'RBRACE':
             estado.pedir_cierre()
         elif tok.type in ('NL', 'PUNTO_COMA'):
-            estado.params_pendientes.clear()
+            # se limpian con el token siguiente: en "for (x in lista) total += x"
+            # la ultima x se revisa cuando el parser ya tiene el NL (Jonathan)
+            estado.limpiar_params = True
         if tok.type in ABRE:
             cab = (tok.type == 'LPAREN' and self.previo is not None
                    and self.previo.type in CABECERAS
@@ -306,6 +311,9 @@ class FlujoTokens:
 
     def _siguiente(self):
         estado.aplicar_cierres()   # semantico: cierra el ambito de la } anterior
+        if estado.limpiar_params:
+            estado.params_pendientes.clear()
+            estado.limpiar_params = False
         if self.salida:
             tok = self.salida.pop(0)
             self._registrar(tok)
@@ -531,6 +539,7 @@ def analizar_sintaxis(codigo):
     global flujo, ultimo_error
     ultimo_error = None
     estado.reiniciar(codigo)
+    sem_jonathan.preparar(codigo)   # funciones y clases del archivo (semantico)
     lexer = crear_lexer()
     flujo = FlujoTokens(lexer)
     parser.parse(codigo, lexer=flujo)

@@ -12,6 +12,7 @@
 from estado import registrar, error_en, recuperar
 import estado
 import semantico_miguel as sem
+import semantico_jonathan as sem_jonathan
 
 
 # ---------- Impresion ----------
@@ -61,12 +62,14 @@ def p_decl_val(p):
                 | VAL ID DOS_PUNTOS tipo'''
     registrar('val con tipo' if p[3] == ':' else 'val con inferencia')
     # semantico: tabla de simbolos y conversion (regla Conversion de Miguel)
-    if len(p) == 5:                       # val x = expr
+    # "val x = expr" y "val x: Tipo" tienen el mismo largo, se separan por el =
+    if p[3] == '=':                       # val x = expr
         sem.declarar_variable(p[2], None, p[4], False, p.lineno(1))
     elif len(p) == 7:                     # val x: Tipo = expr
         sem.declarar_variable(p[2], p[4], p[6], False, p.lineno(1))
     else:                                 # val x: Tipo
         sem.declarar_variable(p[2], p[4], None, False, p.lineno(1))
+        sem_jonathan.val_declarado_sin_valor(p[2])   # puede recibir un valor despues
 
 
 # Conexion: val se acepta donde se acepta var y const val
@@ -175,6 +178,10 @@ def p_param_clase(p):
                    | VAR param'''
     if len(p) == 3:
         registrar('propiedad')
+    if p[1] == 'var':
+        # semantico: con var la propiedad si se puede cambiar en los metodos
+        nombre, tipo, _ = estado.params_pendientes.pop()
+        estado.param_pendiente(nombre, tipo, True)
 
 
 def p_cuerpo_clase_opt(p):

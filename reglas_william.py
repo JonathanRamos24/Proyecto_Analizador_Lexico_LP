@@ -12,6 +12,7 @@
 
 # ------------------------------------------------------------
 from estado import registrar, Valor
+import estado
 import semantico_miguel as sem
 
 
@@ -111,8 +112,15 @@ def p_declaracion_const(p):
 # ---------- for ----------
 # for (i in 1..10) { ... }      for (x in conjunto) total += x
 def p_sentencia_for(p):
-    '''sentencia_for : FOR LPAREN ID IN expr RPAREN cuerpo_ctrl'''
+    '''sentencia_for : FOR LPAREN iterador IN expr RPAREN cuerpo_ctrl'''
     registrar('estructura for')
+
+
+# semantico (Jonathan): la variable del for entra al ambito del cuerpo y es
+# un val (no se puede reasignar dentro del for)
+def p_iterador(p):
+    '''iterador : ID'''
+    estado.param_pendiente(p[1], None)
 
 
 # ---------- while ----------
@@ -174,3 +182,5 @@ def p_param_lambda(p):
     '''param_lambda : ID
                     | ID DOS_PUNTOS tipo'''
     registrar('parametro de lambda')
+    # semantico (Jonathan): el { de la lambda ya abrio su ambito
+    estado.declarar(p[1], p[3] if len(p) == 4 else None, False, p.lineno(1))
