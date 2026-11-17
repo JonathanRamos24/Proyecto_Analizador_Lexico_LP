@@ -9,7 +9,9 @@
 #   - estructura de datos: Map con mapOf
 #   - funcion con parametros por defecto (y vararg)
 # ------------------------------------------------------------
-from estado import registrar, error_en, recuperar
+from estado import registrar, error_en, recuperar, Valor, tipo_de
+import estado
+import semantico_miguel as sem
 
 
 # ---------- Numeros ----------
@@ -19,7 +21,8 @@ def p_numero(p):
     '''expr : INT_LIT
             | DOUBLE_LIT'''
     registrar('literal')
-    p[0] = 'expr'
+    tipo = 'Int' if p.slice[1].type == 'INT_LIT' else 'Double'
+    p[0] = Valor('expr', tipo, literal=True)
 
 
 # ---------- Ingreso por teclado ----------
@@ -27,7 +30,7 @@ def p_numero(p):
 def p_lectura(p):
     '''expr : READLN LPAREN RPAREN'''
     registrar('lectura (readln)')
-    p[0] = 'expr'
+    p[0] = Valor('expr', 'String')
 
 
 # ---------- Declaracion con var ----------
@@ -37,6 +40,13 @@ def p_decl_var(p):
                 | VAR ID DOS_PUNTOS tipo ASSIGN expr
                 | VAR ID DOS_PUNTOS tipo'''
     registrar('var con tipo' if p[3] == ':' else 'var con inferencia')
+    # semantico: tabla de simbolos y conversion
+    if len(p) == 5:                       # var x = expr
+        sem.declarar_variable(p[2], None, p[4], True, p.lineno(1))
+    elif len(p) == 7:                     # var x: Tipo = expr
+        sem.declarar_variable(p[2], p[4], p[6], True, p.lineno(1))
+    else:                                 # var x: Tipo
+        sem.declarar_variable(p[2], p[4], None, True, p.lineno(1))
 
 
 # ---------- Asignaciones ----------
@@ -54,6 +64,8 @@ def p_asignacion(p):
         error_en(p.lineno(2), p.lexpos(2),
                  f'el lado izquierdo de "{p[2]}" debe ser una variable, '
                  'una propiedad o un elemento de lista')
+    else:
+        sem.verificar_asignacion(p[1], p[2], p[3], p.lineno(2))
 
 
 # ---------- Expresiones aritmeticas ----------
@@ -65,7 +77,7 @@ def p_expr_aritmetica(p):
             | expr DIVIDE expr
             | expr MOD expr'''
     registrar('expresion aritmetica')
-    p[0] = 'expr'
+    p[0] = Valor('expr', sem.tipo_aritmetico(p[2], p[1], p[3], p.lineno(2)))
 
 
 # signo: -x    +x
@@ -73,7 +85,8 @@ def p_expr_signo(p):
     '''expr : MINUS expr %prec UMINUS
             | PLUS expr %prec UMINUS'''
     registrar('expresion aritmetica')
-    p[0] = 'expr'
+    p[0] = Valor('expr', sem.tipo_unario(p[1], p[2], p.lineno(1)),
+                 literal=getattr(p[2], 'literal', False))
 
 
 # incremento y decremento: ++i   i++   --i   i--
@@ -81,14 +94,14 @@ def p_expr_incremento_prefijo(p):
     '''expr : INC expr %prec UMINUS
             | DEC expr %prec UMINUS'''
     registrar('incremento/decremento')
-    p[0] = 'expr'
+    p[0] = Valor('expr', sem.tipo_unario(p[1], p[2], p.lineno(1)))
 
 
 def p_expr_incremento_sufijo(p):
     '''expr : expr INC
             | expr DEC'''
     registrar('incremento/decremento')
-    p[0] = 'expr'
+    p[0] = Valor('expr', sem.tipo_unario(p[2], p[1], p.lineno(2)))
 
 
 # rango, valor por defecto (elvis), par clave-valor y casting
@@ -113,7 +126,7 @@ def p_expr_to(p):
 def p_expr_cast(p):
     '''expr : expr AS ID'''
     registrar('casting (as)')
-    p[0] = 'expr'
+    p[0] = Valor('expr', estado.tipo_basico(p[3]))
 
 
 # ---------- Acceso a miembros, indices y nulos ----------
@@ -122,14 +135,18 @@ def p_expr_miembro(p):
     '''expr : expr PUNTO ID
             | expr SAFE_CALL ID'''
     registrar('acceso a miembro')
-    p[0] = 'miembro'
+    # semantico: texto.length y lista.size son Int
+    tipo = 'Int' if p[2] == '.' and p[3] in ('length', 'size') else None
+    p[0] = Valor('miembro', tipo)
 
 
 def p_expr_llamada_miembro(p):
     '''expr : expr PUNTO ID LPAREN args_opt RPAREN
             | expr SAFE_CALL ID LPAREN args_opt RPAREN'''
     registrar('llamada a metodo')
-    p[0] = 'expr'
+    # semantico: conversiones explicitas texto.toInt(), n.toDouble(), ...
+    tipo = sem.CONVERSIONES.get(p[3]) if p[2] == '.' else None
+    p[0] = Valor('expr', tipo)
 
 
 def p_expr_indice(p):
@@ -206,11 +223,14 @@ def p_mapa(p):
 def p_param_defecto(p):
     '''param : ID DOS_PUNTOS tipo ASSIGN expr'''
     registrar('parametro por defecto')
+    estado.param_pendiente(p[1], p[3])
+    sem.verificar_conversion(p[3], p[5], p.lineno(1))
 
 
 def p_param_vararg(p):
     '''param : VARARG ID DOS_PUNTOS tipo'''
     registrar('parametro vararg')
+    estado.param_pendiente(p[2], None)    # dentro de la funcion es un arreglo
 # ------------------------------------------------------------
 # Fin aporte Miguel Galarza
 # ------------------------------------------------------------

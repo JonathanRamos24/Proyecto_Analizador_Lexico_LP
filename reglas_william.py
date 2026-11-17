@@ -11,7 +11,8 @@
 #
 
 # ------------------------------------------------------------
-from estado import registrar
+from estado import registrar, Valor
+import semantico_miguel as sem
 
 
 # ---------- Literales ----------
@@ -23,7 +24,10 @@ def p_literal_william(p):
             | CHAR_LIT
             | STRING_LIT'''
     registrar('literal')
-    p[0] = 'expr'
+    # semantico: tipo de cada literal
+    tipos = {'LONG_LIT': 'Long', 'FLOAT_LIT': 'Float', 'CHAR_LIT': 'Char',
+             'STRING_LIT': 'String'}
+    p[0] = Valor('expr', tipos[p.slice[1].type])
 
 
 # true    false
@@ -31,7 +35,7 @@ def p_literal_booleano(p):
     '''expr : TRUE
             | FALSE'''
     registrar('literal booleano')
-    p[0] = 'expr'
+    p[0] = Valor('expr', 'Boolean')
 
 
 # null
@@ -52,7 +56,7 @@ def p_comparacion(p):
             | expr LE expr
             | expr GE expr'''
     registrar('comparacion')
-    p[0] = 'expr'
+    p[0] = Valor('expr', 'Boolean')
 
 
 # Conectores logicos: a > 1 && b < 5      x == 0 || y == 0
@@ -60,7 +64,8 @@ def p_conector_logico(p):
     '''expr : expr AND expr
             | expr OR expr'''
     registrar('conector logico')
-    p[0] = 'expr'
+    sem.verificar_logico(p[2], p[1], p[3], p.lineno(2))   # semantico (Miguel)
+    p[0] = Valor('expr', 'Boolean')
 
 
 # pertenencia y tipo: x in lista    x !in 1..5    y is String    y !is Int
@@ -68,21 +73,21 @@ def p_pertenencia(p):
     '''expr : expr IN expr
             | expr NOT_IN expr'''
     registrar('pertenencia (in)')
-    p[0] = 'expr'
+    p[0] = Valor('expr', 'Boolean')
 
 
 def p_es_tipo(p):
     '''expr : expr IS ID
             | expr NOT_IS ID'''
     registrar('verificacion de tipo (is)')
-    p[0] = 'expr'
+    p[0] = Valor('expr', 'Boolean')
 
 
 # Negacion: !activo      !(a > b)
 def p_negacion(p):
     '''expr : NOT expr %prec UMINUS'''
     registrar('negacion (!)')
-    p[0] = 'expr'
+    p[0] = Valor('expr', 'Boolean')
 
 
 # ---------- const val ----------
@@ -91,6 +96,11 @@ def p_decl_const(p):
     '''decl_const : CONST VAL ID ASSIGN expr
                   | CONST VAL ID DOS_PUNTOS tipo ASSIGN expr'''
     registrar('const val con tipo' if p[4] == ':' else 'const val con inferencia')
+    # semantico: tabla de simbolos y conversion (regla Conversion de Miguel)
+    if len(p) == 6:                       # const val X = expr
+        sem.declarar_variable(p[3], None, p[5], False, p.lineno(1))
+    else:                                 # const val X: Tipo = expr
+        sem.declarar_variable(p[3], p[5], p[7], False, p.lineno(1))
 
 
 # Conexion: const val se acepta donde se acepta val / var

@@ -167,12 +167,15 @@ def p_tipos_gen_opt(p):
 # ---------- Expresiones comunes ----------
 def p_expr_parentesis(p):
     '''expr : LPAREN expr RPAREN'''
-    p[0] = 'expr'
+    p[0] = estado.Valor('expr', estado.tipo_de(p[2]))
 
 
+# semantico: el tipo de una variable sale de la tabla de simbolos
 def p_expr_id(p):
     '''expr : ID'''
-    p[0] = 'id'
+    simbolo = estado.buscar(p[1])
+    tipo = estado.tipo_basico(simbolo.tipo) if simbolo else None
+    p[0] = estado.Valor('id', tipo, nombre=p[1])
 
 
 # llamada a funcion: sumar(1, 2)
@@ -258,6 +261,13 @@ class FlujoTokens:
     def _registrar(self, tok):
         """actualiza la pila de ( [ { con el token que se entrega"""
         self.cierra_cabecera = False
+        # semantico: ambitos de la tabla de simbolos
+        if tok.type == 'LBRACE':
+            estado.abrir_ambito(tok.lineno)
+        elif tok.type == 'RBRACE':
+            estado.pedir_cierre()
+        elif tok.type in ('NL', 'PUNTO_COMA'):
+            estado.params_pendientes.clear()
         if tok.type in ABRE:
             cab = (tok.type == 'LPAREN' and self.previo is not None
                    and self.previo.type in CABECERAS
@@ -295,6 +305,7 @@ class FlujoTokens:
         return tok
 
     def _siguiente(self):
+        estado.aplicar_cierres()   # semantico: cierra el ambito de la } anterior
         if self.salida:
             tok = self.salida.pop(0)
             self._registrar(tok)

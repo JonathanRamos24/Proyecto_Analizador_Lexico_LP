@@ -10,6 +10,8 @@
 #   - clases (constructor, propiedades y metodos), object y modificadores
 # ------------------------------------------------------------
 from estado import registrar, error_en, recuperar
+import estado
+import semantico_miguel as sem
 
 
 # ---------- Impresion ----------
@@ -31,6 +33,8 @@ def p_tipo(p):
             | tipo_base QUESTION'''
     if len(p) == 3:
         registrar('tipo anulable')
+    # semantico: nombre del tipo ("Int"); los anulables (Int?) quedan sin revisar
+    p[0] = p[1] if len(p) == 2 else None
 
 
 def p_tipo_base(p):
@@ -38,6 +42,7 @@ def p_tipo_base(p):
                  | ID LT lista_tipos GT'''
     if len(p) == 5:
         registrar('tipo generico')
+    p[0] = p[1] if len(p) == 2 else None   # semantico: List<Int> no se revisa
 
 
 # tipo funcion, para guardar una lambda en una variable:
@@ -55,6 +60,13 @@ def p_decl_val(p):
                 | VAL ID DOS_PUNTOS tipo ASSIGN expr
                 | VAL ID DOS_PUNTOS tipo'''
     registrar('val con tipo' if p[3] == ':' else 'val con inferencia')
+    # semantico: tabla de simbolos y conversion (regla Conversion de Miguel)
+    if len(p) == 5:                       # val x = expr
+        sem.declarar_variable(p[2], None, p[4], False, p.lineno(1))
+    elif len(p) == 7:                     # val x: Tipo = expr
+        sem.declarar_variable(p[2], p[4], p[6], False, p.lineno(1))
+    else:                                 # val x: Tipo
+        sem.declarar_variable(p[2], p[4], None, False, p.lineno(1))
 
 
 # Conexion: val se acepta donde se acepta var y const val
@@ -119,6 +131,7 @@ def p_params(p):
 # (los de valor por defecto y vararg estan en reglas_miguel.py)
 def p_param(p):
     '''param : ID DOS_PUNTOS tipo'''
+    estado.param_pendiente(p[1], p[3])   # semantico: entra al ambito de la funcion
 
 
 # return      return a + b
