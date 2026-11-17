@@ -1,0 +1,29 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_william2.kt
+Usuario: magselpad
+Fecha:   16/11/2026 22:23:03
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (0):
+Ninguno
+
+Construcciones reconocidas:
+Set (setOf)                   3
+asignacion                    3
+comparacion                   6
+conector logico               1
+estructura do-while           1
+estructura for                3
+estructura while              3
+expresion aritmetica          4
+incremento/decremento         3
+lambda                        4
+literal                       20
+llamada a funcion             3
+parametro de lambda           6
+rango                         1
+var con inferencia            11
+
+Resultado: analisis sintactico correcto

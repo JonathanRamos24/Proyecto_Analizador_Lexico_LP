@@ -1,0 +1,24 @@
+KotLex - Analizador sintactico
+Archivo: pruebas/sintaxis_william1.kt
+Usuario: magselpad
+Fecha:   16/11/2026 22:22:39
+
+Errores lexicos (0):
+Ninguno
+
+Errores sintacticos (0):
+Ninguno
+
+Construcciones reconocidas:
+comparacion                   14
+conector logico               6
+const val con inferencia      2
+const val con tipo            2
+expresion aritmetica          2
+literal                       21
+literal booleano              2
+literal null                  1
+negacion (!)                  3
+var con inferencia            22
+
+Resultado: analisis sintactico correcto
