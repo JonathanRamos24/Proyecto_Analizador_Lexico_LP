@@ -63,6 +63,21 @@ def p_conector_logico(p):
     p[0] = 'expr'
 
 
+# pertenencia y tipo: x in lista    x !in 1..5    y is String    y !is Int
+def p_pertenencia(p):
+    '''expr : expr IN expr
+            | expr NOT_IN expr'''
+    registrar('pertenencia (in)')
+    p[0] = 'expr'
+
+
+def p_es_tipo(p):
+    '''expr : expr IS ID
+            | expr NOT_IS ID'''
+    registrar('verificacion de tipo (is)')
+    p[0] = 'expr'
+
+
 # Negacion: !activo      !(a > b)
 def p_negacion(p):
     '''expr : NOT expr %prec UMINUS'''
