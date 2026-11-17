@@ -17,7 +17,7 @@ Proyecto de Lenguajes de Programación (ESPOL), hecho con Python y PLY.
 - `semantico.py`: analizador semántico (Avance 3). Uso: `python semantico.py archivo.kt usuarioGit`.
 - `semantico_miguel.py`: **listo**. Reglas semánticas de Miguel: Operaciones permitidas y Conversión.
 - `semantico_jonathan.py`: **listo**. Reglas semánticas de Jonathan: Identificadores (declarada antes de usarse y dentro de su alcance) y Asignación (val, const val y parámetros no se reasignan).
-- `semantico_william.py`: **pendiente**. Retorno de funciones y break/continue solo en bucles.
+- `semantico_william.py`: **listo**. Reglas semánticas de William: Retorno de funciones (el valor de `return` debe coincidir con el tipo declarado) y Estructuras de control (`break` y `continue` solo dentro de un bucle).
 - `pruebas/`: 3 pruebas por integrante, `sintaxis_<nombre>1.kt` y `sintaxis_<nombre>2.kt` (correctas) y `sintaxis_<nombre>3_errores.kt` (con errores).
 - `pruebas/semantico_miguel1.kt` (correcta), `semantico_miguel2.kt` (Operaciones permitidas) y `semantico_miguel3.kt` (Conversión).
 - `pruebas/semantico_jonathan1.kt` (correcta), `semantico_jonathan2.kt` (Identificadores) y `semantico_jonathan3.kt` (Asignación).
