@@ -1,0 +1,29 @@
+KotLex - Analizador semantico
+Archivo: pruebas/semantico_miguel1.kt
+Usuario: magselpad
+Fecha:   16/11/2026 22:58:13
+
+Errores semanticos (0):
+Ninguno
+
+Tabla de simbolos:
+nombre          tipo      mutable  ambito  linea
+IVA             Double    val      0       2
+limite          Long      val      0       3
+precio          Double    val      1       5
+cantidad        Int       val      1       5
+subtotal        Double    val      1       6
+conIva          Double    val      1       7
+texto           String    val      1       12
+edad            Int       var      1       13
+nombre          String    var      1       16
+mensaje         String    val      1       18
+promedio        Double    var      1       19
+grande          Long      var      1       21
+adulto          Boolean   val      1       23
+hoy             Boolean   val      1       24
+doble           Int       val      1       25
+letras          Int       val      1       26
+edad            String    var      2       28
+
+Resultado: analisis semantico correcto

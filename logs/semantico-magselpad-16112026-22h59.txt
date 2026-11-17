@@ -1,0 +1,28 @@
+KotLex - Analizador semantico
+Archivo: pruebas/semantico_miguel3.kt
+Usuario: magselpad
+Fecha:   16/11/2026 22:59:02
+
+Errores semanticos (8):
+Error semántico [Conversión] (línea 2): se esperaba Double pero se recibió Int. Use toDouble() para convertir.
+Error semántico [Conversión] (línea 3): se esperaba Int pero se recibió Double. Use toInt() para convertir.
+Error semántico [Conversión] (línea 6): se esperaba Int pero se recibió String.
+Error semántico [Conversión] (línea 8): se esperaba Int pero se recibió Double. Use toInt() para convertir.
+Error semántico [Conversión] (línea 10): se esperaba Double pero se recibió Int. Use toDouble() para convertir.
+Error semántico [Conversión] (línea 11): se esperaba Int pero se recibió Double. Use toInt() para convertir.
+Error semántico [Conversión] (línea 12): se esperaba String pero se recibió Int.
+Error semántico [Conversión] (línea 15): se esperaba Boolean pero se recibió Int.
+
+Tabla de simbolos:
+nombre          tipo      mutable  ambito  linea
+precio          Double    val      0       2
+MAX             Int       val      0       3
+edad            Int       val      1       6
+nota            Int       var      1       7
+total           Double    var      1       9
+mensaje         String    var      1       12
+ok1             Double    val      1       13
+ok2             Long      val      1       14
+activo          Boolean   var      1       15
+
+Resultado: 8 errores semanticos
