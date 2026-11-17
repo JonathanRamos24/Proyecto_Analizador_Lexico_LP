@@ -1,0 +1,18 @@
+KotLex - Analizador semantico
+Archivo: pruebas/semantico_william3.kt
+Usuario: williamp11
+Fecha:   17/11/2026 00:15:22
+
+Errores semanticos (4):
+Error semántico [Estructuras de control] (línea 3): "break" solo puede usarse dentro de un bucle.
+Error semántico [Estructuras de control] (línea 6): "continue" solo puede usarse dentro de un bucle.
+Error semántico [Estructuras de control] (línea 11): "continue" solo puede usarse dentro de un bucle.
+Error semántico [Estructuras de control] (línea 19): "break" solo puede usarse dentro de un bucle.
+
+Tabla de simbolos:
+nombre          tipo      mutable  ambito  linea
+n               Int       val      1       4
+i               -         val      2       8
+x               Int       val      1       18
+
+Resultado: 4 errores semanticos

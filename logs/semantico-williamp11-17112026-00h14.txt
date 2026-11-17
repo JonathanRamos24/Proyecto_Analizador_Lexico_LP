@@ -1,0 +1,21 @@
+KotLex - Analizador semantico
+Archivo: pruebas/semantico_william2.kt
+Usuario: williamp11
+Fecha:   17/11/2026 00:14:53
+
+Errores semanticos (6):
+Error semántico [Retorno de funciones] (línea 3): la función "area" debe retornar Double, pero se retornó String.
+Error semántico [Retorno de funciones] (línea 7): la función "esPar" debe retornar Boolean, pero se retornó Int.
+Error semántico [Retorno de funciones] (línea 11): la función "nombre" debe retornar String, pero se retornó Int.
+Error semántico [Retorno de funciones] (línea 15): la función "total" debe retornar Int, pero se retornó Double.
+Error semántico [Retorno de funciones] (línea 19): la función "vacio" debe retornar Int.
+Error semántico [Retorno de funciones] (línea 23): la función "saludar" no declara tipo de retorno y no puede retornar un String.
+
+Tabla de simbolos:
+nombre          tipo      mutable  ambito  linea
+r               Double    val      1       2
+n               Int       val      1       6
+a               Int       val      1       14
+x               Int       val      1       26
+
+Resultado: 6 errores semanticos

@@ -1,0 +1,20 @@
+KotLex - Analizador semantico
+Archivo: pruebas/semantico_william1.kt
+Usuario: williamp11
+Fecha:   17/11/2026 00:12:47
+
+Errores semanticos (0):
+Ninguno
+
+Tabla de simbolos:
+nombre          tipo      mutable  ambito  linea
+r               Double    val      1       2
+n               Int       val      1       6
+nombre          String    val      1       10
+texto           String    val      1       18
+limite          Int       val      1       23
+total           Int       var      1       24
+i               -         val      2       25
+j               Int       var      1       30
+
+Resultado: analisis semantico correcto
