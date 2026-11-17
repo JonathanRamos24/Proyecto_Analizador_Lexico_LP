@@ -1,0 +1,25 @@
+KotLex - Analizador semantico
+Archivo: pruebas/semantico_jonathan2.kt
+Usuario: JonathanRamos24
+Fecha:   16/11/2026 23:23:27
+
+Errores semanticos (8):
+Error semántico [Identificadores] (línea 4): la variable "totl" no ha sido declarada.
+Error semántico [Identificadores] (línea 5): la variable "precio" no ha sido declarada.
+Error semántico [Identificadores] (línea 6): la variable "suma" no ha sido declarada.
+Error semántico [Identificadores] (línea 10): la variable "dentro" no existe en este alcance (se declaró en la línea 8, dentro de otro bloque).
+Error semántico [Identificadores] (línea 14): la variable "i" no existe en este alcance (se declaró en la línea 11, dentro de otro bloque).
+Error semántico [Identificadores] (línea 15): la función "calcular" no ha sido declarada.
+Error semántico [Identificadores] (línea 21): la variable "total" no existe en este alcance (se declaró en la línea 3, dentro de otro bloque).
+Error semántico [Identificadores] (línea 22): la variable "mensaje" no ha sido declarada.
+
+Tabla de simbolos:
+nombre          tipo      mutable  ambito  linea
+total           Int       val      1       3
+resultado       -         val      1       5
+suma            -         var      1       6
+dentro          Int       val      2       8
+i               -         val      2       11
+r               -         val      1       15
+
+Resultado: 8 errores semanticos

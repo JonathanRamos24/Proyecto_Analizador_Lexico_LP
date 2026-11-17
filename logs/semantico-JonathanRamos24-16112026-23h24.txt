@@ -1,0 +1,31 @@
+KotLex - Analizador semantico
+Archivo: pruebas/semantico_jonathan3.kt
+Usuario: JonathanRamos24
+Fecha:   16/11/2026 23:24:29
+
+Errores semanticos (10):
+Error semántico [Asignación] (línea 6): "nombre" es un val (línea 3) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 7): "MAXIMO" es un val (línea 2) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 9): "edad" es un val (línea 8) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 10): "edad" es un val (línea 8) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 11): "edad" es un val (línea 8) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 12): "edad" es un val (línea 8) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 15): "nota" es un val (línea 13) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 19): "i" es un val (línea 18) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 24): "x" es un val (línea 23) y no se puede reasignar. Use var si necesita cambiar su valor.
+Error semántico [Asignación] (línea 30): "numero" es un val (línea 27) y no se puede reasignar. Use var si necesita cambiar su valor.
+
+Tabla de simbolos:
+nombre          tipo      mutable  ambito  linea
+MAXIMO          Int       val      0       2
+nombre          String    val      0       3
+edad            Int       val      1       8
+nota            Double    val      1       13
+contador        Int       var      1       16
+i               -         val      2       18
+x               Int       val      1       23
+numero          String    val      1       27
+saldo           Double    var      1       27
+monto           Double    val      2       28
+
+Resultado: 10 errores semanticos

@@ -1,0 +1,26 @@
+KotLex - Analizador semantico
+Archivo: pruebas/semantico_jonathan1.kt
+Usuario: JonathanRamos24
+Fecha:   16/11/2026 23:22:25
+
+Errores semanticos (0):
+Ninguno
+
+Tabla de simbolos:
+nombre          tipo      mutable  ambito  linea
+NOTA_MINIMA     Double    val      0       2
+nombre          String    val      1       5
+nota            Double    var      1       6
+edad            Int       val      1       8
+intentos        Int       var      1       10
+x               Int       val      2       12
+doble           -         val      1       12
+i               -         val      2       13
+parcial         -         val      2       14
+mensaje         String    val      2       19
+e               -         val      1       23
+nombre          String    val      1       30
+nota            Double    var      1       30
+puntos          Double    val      2       31
+
+Resultado: analisis semantico correcto
