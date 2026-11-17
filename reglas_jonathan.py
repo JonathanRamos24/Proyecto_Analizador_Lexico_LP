@@ -13,6 +13,7 @@ from estado import registrar, error_en, recuperar
 import estado
 import semantico_miguel as sem
 import semantico_jonathan as sem_jonathan
+import semantico_william as sem_william
 
 
 # ---------- Impresion ----------
@@ -142,6 +143,8 @@ def p_return(p):
     '''sentencia_return : RETURN
                         | RETURN expr'''
     registrar('return')
+    # semantico (William): el valor debe coincidir con el tipo de retorno
+    sem_william.verificar_return(p[2] if len(p) == 3 else None, p.lineno(1), p.lexpos(1))
 
 
 # Conexion: return es una sentencia mas (tambien puede ir en un if sin llaves)

@@ -20,6 +20,7 @@ import ply.yacc as yacc
 import estado
 from lexer import tokens as tokens_lexer, reserved, crear_lexer, find_column
 import semantico_jonathan as sem_jonathan
+import semantico_william as sem_william
 
 # Reglas de cada integrante (PLY toma todas las funciones p_ de este modulo)
 from reglas_jonathan import *   # noqa: F401,F403
@@ -144,6 +145,7 @@ def p_sentencia_simple(p):
     # sentencia_return se conecta en reglas_jonathan.py
     if p[1] in ('break', 'continue'):
         estado.registrar(p[1])
+        sem_william.registrar_salto(p[1], p.lineno(1), p.lexpos(1))   # regla Estructuras de control
 
 
 # cuerpo de un if / for / while / when: un bloque o una sola sentencia
@@ -540,9 +542,11 @@ def analizar_sintaxis(codigo):
     ultimo_error = None
     estado.reiniciar(codigo)
     sem_jonathan.preparar(codigo)   # funciones y clases del archivo (semantico)
+    sem_william.preparar(codigo)    # tipo de retorno de cada funcion (semantico)
     lexer = crear_lexer()
     flujo = FlujoTokens(lexer)
     parser.parse(codigo, lexer=flujo)
+    sem_william.finalizar()         # break / continue que quedaron fuera de un bucle
 
     errores_sint = list(estado.errores)
     # parentesis que quedaron sin cerrar y que el flujo cerro solo

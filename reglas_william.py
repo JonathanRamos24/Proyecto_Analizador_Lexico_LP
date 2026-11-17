@@ -14,6 +14,7 @@
 from estado import registrar, Valor
 import estado
 import semantico_miguel as sem
+import semantico_william as sem_william
 
 
 # ---------- Literales ----------
@@ -114,6 +115,7 @@ def p_declaracion_const(p):
 def p_sentencia_for(p):
     '''sentencia_for : FOR LPAREN iterador IN expr RPAREN cuerpo_ctrl'''
     registrar('estructura for')
+    sem_william.cerrar_bucle(p.lexpos(1))   # semantico: break / continue dentro del bucle
 
 
 # semantico (Jonathan): la variable del for entra al ambito del cuerpo y es
@@ -128,6 +130,7 @@ def p_iterador(p):
 def p_sentencia_while(p):
     '''sentencia_while : WHILE LPAREN expr RPAREN cuerpo_ctrl'''
     registrar('estructura while')
+    sem_william.cerrar_bucle(p.lexpos(1))   # semantico: break / continue dentro del bucle
 
 
 # ---------- do-while ----------
@@ -135,6 +138,7 @@ def p_sentencia_while(p):
 def p_sentencia_do(p):
     '''sentencia_do : DO cuerpo_ctrl WHILE LPAREN expr RPAREN'''
     registrar('estructura do-while')
+    sem_william.cerrar_bucle(p.lexpos(1))   # semantico: break / continue dentro del bucle
 
 
 # Conexion: for / while / do-while como sentencia dentro de un bloque
