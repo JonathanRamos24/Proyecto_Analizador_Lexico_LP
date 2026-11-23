@@ -18,6 +18,7 @@ Proyecto de Lenguajes de Programación (ESPOL), hecho con Python y PLY.
 - `semantico_miguel.py`: **listo**. Reglas semánticas de Miguel: Operaciones permitidas y Conversión.
 - `semantico_jonathan.py`: **listo**. Reglas semánticas de Jonathan: Identificadores (declarada antes de usarse y dentro de su alcance) y Asignación (val, const val y parámetros no se reasignan).
 - `semantico_william.py`: **listo**. Reglas semánticas de William: Retorno de funciones (el valor de `return` debe coincidir con el tipo declarado) y Estructuras de control (`break` y `continue` solo dentro de un bucle).
+- `interfaz.py`: interfaz gráfica en Tkinter. Editor con números de línea, análisis léxico (F5), sintáctico (F6), semántico (F7) o los tres (F8), pestañas de tokens, errores, reglas, tabla de símbolos y log. Genera los mismos logs que la consola.
 - `pruebas/`: 3 pruebas por integrante, `sintaxis_<nombre>1.kt` y `sintaxis_<nombre>2.kt` (correctas) y `sintaxis_<nombre>3_errores.kt` (con errores).
 - `pruebas/semantico_miguel1.kt` (correcta), `semantico_miguel2.kt` (Operaciones permitidas) y `semantico_miguel3.kt` (Conversión).
 - `pruebas/semantico_jonathan1.kt` (correcta), `semantico_jonathan2.kt` (Identificadores) y `semantico_jonathan3.kt` (Asignación).
@@ -40,3 +41,9 @@ Genera `logs/sintactico-usuarioGit-dd-mm-aaaa-HHhMM.txt` con los errores sintác
 python semantico.py archivo.kt usuarioGit
 ```
 Genera `logs/semantico-usuarioGit-ddmmaaaa-HHhMM.txt` con los errores semánticos y la tabla de símbolos.
+
+## Interfaz
+```
+python interfaz.py
+```
+En "Desarrollador" se elige el usuario con el que se nombra el log.
